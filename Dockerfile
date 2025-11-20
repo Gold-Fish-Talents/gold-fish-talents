@@ -5,8 +5,12 @@ WORKDIR /app
 COPY package.json bun.lock ./
 COPY nuxt.config.ts ./
 
+ARG SITE_URL
+ARG CDN_URL
+
 ENV NITRO_PRESET=bun
 ENV NUXT_PUBLIC_SITE_URL=$SITE_URL
+ENV NUXT_PUBLIC_CDN_URL=$CDN_URL
 
 RUN bun install --frozen-lockfile
 
