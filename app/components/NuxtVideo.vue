@@ -1,4 +1,8 @@
 <script setup lang="ts">
+const {
+  public: { cdnUrl },
+} = useRuntimeConfig()
+
 type Orientation = 'portrait' | 'landscape'
 
 interface Source {
@@ -6,8 +10,8 @@ interface Source {
   type: string
   media: string
   codec: Codec
-  resolution: Resolution
   orientation: Orientation
+  // resolution: Resolution
 }
 
 const props = withDefaults(
@@ -69,10 +73,10 @@ watch(
         await videoRef.value?.play()
         break
       case 'pause':
-        await videoRef.value?.pause()
+        videoRef.value?.pause()
         break
       case 'stop':
-        await videoRef.value?.pause()
+        videoRef.value?.pause()
         break
       default:
         break
@@ -81,6 +85,7 @@ watch(
 )
 
 const progress = ref(0)
+const isVideoLoaded = ref(false)
 
 function handleError(e?: Error) {
   console.error('Video Error occurred:', e)
@@ -98,6 +103,10 @@ function handlePause() {
   // console.log('Video paused')
 }
 
+function handleLoadedData() {
+  isVideoLoaded.value = true
+}
+
 function handleProgress() {
   if (!videoRef.value) return
 
@@ -113,14 +122,22 @@ function handleEnded() {
   emit('progress', progress.value)
   emit('ended')
 }
+
+const qualtiy = 75
+const { width, height } = useElementSize(videoRef)
+
+// TODO: remove when hero video is same as landscape and portrait
+const adaptivePoster = computed(() => {
+  const orientation = width.value > height.value ? 'landscape' : 'portrait'
+  return props.poster ? `${cdnUrl}/image/fit_cover&${orientation === 'portrait' ? 'h' : 'w'}_720/${extractCdnId(props.poster)}` : '/previews/placeholder-blank.jpg'
+})
 </script>
 
 <template>
-  <!-- @loadedmetadata="" -->
   <video
     ref="videoRef"
     class="size-full bg-black"
-    :poster="poster"
+    :poster="adaptivePoster"
     :controlsList="controlsList"
     :preload="preload"
     :controls="controls"
@@ -128,17 +145,27 @@ function handleEnded() {
     :muted="muted"
     :playsinline="playsinline"
     :disablePictureInPicture="disablePictureInPicture"
+    :class="{ shimmer: !isVideoLoaded }"
     @error="handleError()"
     @canplay="handleCanPlay"
     @play="handlePlay"
     @pause="handlePause"
     @timeupdate="handleProgress"
-    @ended="handleEnded">
+    @ended="handleEnded"
+    @loadeddata="handleLoadedData"
+    @loadedmetadata="handleLoadedData">
     <template v-if="Array.isArray(source)">
-      <source v-for="{ src, type, media } of source" :key="src" :src="src" :type="type" :media="media" />
+      <source
+        v-for="{ src, type, media, codec, orientation } of source"
+        :key="src"
+        :src="`${cdnUrl}/video/s_${videoFitCoverAspect(orientation, orientation === 'landscape' ? 16 / 9 : 9 / 16, width, height)}&c_${codec}&q_${qualtiy}/${src}`"
+        :type="type"
+        :media="media" />
     </template>
     <template v-else>
-      <source :src="source.src" :type="source.type" />
+      <source
+        :src="`${cdnUrl}/video/s_${videoFitCoverAspect(source.orientation, source.orientation === 'landscape' ? 16 / 9 : 9 / 16, width, height)}&c_${source.codec}&q_${qualtiy}/${source.src}`"
+        :type="source.type" />
     </template>
     Your browser does not support the video tag.
   </video>

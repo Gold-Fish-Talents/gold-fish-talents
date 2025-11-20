@@ -19,13 +19,13 @@ const activeModel = useState<string | null>()
     <AppRibbon v-if="isFeatured" :title="'Featured'" class="absolute -left-2 top-2 z-10" />
     <NuxtLink :to="url" class="col-span-full col-start-1 row-span-full row-start-1 size-full overflow-clip rounded-md bg-light-500 dark:bg-dark-500" @click="activeModel = name">
       <NuxtImg
-        :src="`${photo.image}/-/scale_crop/480x640/50p,0p/`"
+        :src="extractCdnId(photo.image)"
         :alt="photo.description"
-        :width="480"
-        :height="Math.round(480 / (3 / 4))"
+        :width="240"
+        :height="Math.round(240 / (3 / 4))"
         fit="cover"
         loading="lazy"
-        :placeholder="[120, Math.round(120 / (3 / 4)), 'lightest', 25]"
+        :placeholder="[120, Math.round(120 / (3 / 4)), 50, 5]"
         class="w-full rounded-sm bg-light-600 object-cover dark:bg-dark-500"
         :class="{ active: activeModel === name }" />
       />

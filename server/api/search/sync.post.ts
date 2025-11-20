@@ -20,6 +20,8 @@ export async function syncSearchDb() {
 
       if (!(properties.DOB.date?.start && cover?.type === 'external')) return null
 
+      console.log({ cover: cover.external.url })
+
       return {
         id: properties.Slug.formula.string,
         gender: properties.Gender.select.name as Gender,
@@ -28,7 +30,7 @@ export async function syncSearchDb() {
         status: properties.Status.status.name,
         fee: properties.Fee?.number ?? 0,
         'photo.title': title,
-        'photo.image': cover?.type === 'external' ? cover.external.url.split('/')[3] : undefined,
+        'photo.image': cover?.type === 'external' ? cover.external.url : undefined,
         'photo.description': '',
         'photo.aspectRatio': 16 / 9,
         rating: 0,

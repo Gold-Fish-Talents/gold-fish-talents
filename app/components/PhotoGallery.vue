@@ -24,13 +24,13 @@ const { height: sliderHeight } = useElementSize(slider)
           <!-- url -->
           <NuxtLink v-for="{ id, title, image, description } in allPhotos" :key="`${dupIndex}-${id}`" @click="emit('active', `${dupIndex}-${title}`)">
             <NuxtImg
-              :src="image"
+              :src="extractCdnId(image)"
               :alt="description"
-              :width="480"
-              :height="Math.round(480 / (3 / 4))"
+              :width="240"
+              :height="Math.round(240 / (3 / 4))"
               fit="cover"
               loading="lazy"
-              :placeholder="[120, Math.round(120 / (3 / 4)), 'lightest', 25]"
+              :placeholder="[120, Math.round(120 / (3 / 4)), 50, 5]"
               class="w-full rounded-sm bg-light-600 object-cover dark:bg-dark-500"
               :class="{ active: activePhoto === `${dupIndex}-${title}` }" />
           </NuxtLink>

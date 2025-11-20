@@ -42,7 +42,7 @@ export default defineCachedEventHandler<Promise<DetailedModel>>(
         age: differenceInYears(new Date(), parseISO(model.properties.DOB.date.start)),
         fee: model.properties.Fee.number,
         photo: {
-          image: model.cover?.type === 'external' ? model.cover.external.url.split('/')[3] : undefined,
+          image: model.cover?.type === 'external' ? model.cover.external.url : undefined,
         },
         details: {
           physicalAttributes: {

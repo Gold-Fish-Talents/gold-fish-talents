@@ -44,7 +44,7 @@ export default defineEventHandler(async (event) => {
           id: slug,
           title: notionTextStringify(properties.Name.title),
           description: notionTextStringify(properties.Description.rich_text),
-          image: cover?.type === 'external' ? cover.external.url.split('/')[3] : undefined,
+          image: cover?.type === 'external' ? cover.external.url : undefined,
           aspectRatio: aW / aH,
           featured: properties.Featured.checkbox,
           projectId: properties.Project.relation[0].id,

@@ -38,7 +38,7 @@ const nativeConfig =
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-05-15',
+  compatibilityDate: '2025-07-15',
   experimental: {
     viewTransition: true,
   },
@@ -60,8 +60,12 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-auth-utils',
     'nuxt-maplibre',
-    'nuxt-nodemailer',
   ],
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
   nitro: {
     compressPublicAssets: true,
     storage: {
@@ -77,21 +81,10 @@ export default defineNuxtConfig({
       tasks: true,
     },
     scheduledTasks: {
-      '*/5 * * * *': ['search:sync'],
+      '*/3 * * * *': ['sync:cdn'],
+      '*/5 * * * *': ['sync:search'],
     },
   },
-  /*   vite: {
-    // FIXME: temporary fix for email remove when not needed
-    $server: {
-      build: {
-        rollupOptions: {
-          output: {
-            preserveModules: true,
-          },
-        },
-      },
-    },
-  }, */
   routeRules: {
     '/': { ssr: true },
     '/_ipx/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
@@ -106,6 +99,7 @@ export default defineNuxtConfig({
     },
     public: {
       siteUrl: '',
+      cdnUrl: '',
       scripts: {
         googleAnalytics: {
           id: '',
@@ -121,6 +115,15 @@ export default defineNuxtConfig({
       steganographyKey: '',
       mapApiKey: '',
       paymentUpiInfo: '',
+      r2AccessKeyId: '',
+      r2SecretAccessKey: '',
+      r2Endpoint: '',
+      r2Bucket: '',
+      r2Region: '',
+      documensoApi: '',
+      documensoApiKey: '',
+      novuApi: '',
+      novuApiKey: '',
     },
     session: {
       password: '',
@@ -148,14 +151,14 @@ export default defineNuxtConfig({
     },
   },
   image: {
-    provider: 'uploadcare',
-    ipx: {},
-    uploadcare: {
-      cdnURL: 'https://ucarecdn.com',
-      quality: 'smart',
-      format: 'auto',
-      progressive: 'yes',
-      strip_meta: 'all',
+    provider: 'ipx',
+    ipx: {
+      baseURL: `${process.env.NUXT_PUBLIC_CDN_URL}/image`,
+      modifiers: {
+        format: 'auto',
+        quality: 80,
+        progressive: 'yes',
+      },
     },
   },
   scripts: {
@@ -353,19 +356,6 @@ export default defineNuxtConfig({
     devOptions: {
       enabled: false,
       type: 'module',
-    },
-  },
-  nodemailer: {
-    from: '',
-    host: '',
-    port: '',
-    secure: true,
-    auth: {
-      user: '',
-      pass: '',
-    },
-    tls: {
-      rejectUnauthorized: false,
     },
   },
   ...nativeConfig,

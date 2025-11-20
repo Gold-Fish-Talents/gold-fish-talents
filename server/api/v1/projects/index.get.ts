@@ -63,7 +63,7 @@ export default defineEventHandler(async (event) => {
           index: properties.Index.number,
           title: notionTextStringify(properties.Name.title),
           description: notionTextStringify(properties.Description.rich_text),
-          image: cover?.type === 'external' ? cover.external.url.split('/')[3] : undefined,
+          image: cover?.type === 'external' ? cover.external.url : undefined,
           aspectRatio: aW / aH,
           featured: properties.Featured.checkbox,
           projectId: properties.Project.relation[0].id,
@@ -111,7 +111,7 @@ export default defineEventHandler(async (event) => {
       return {
         id: slugify(notionTextStringify(properties.Name.title)),
         name: notionTextStringify(properties.Name.title),
-        image: cover?.type === 'external' ? cover.external.url.split('/')[3] : undefined,
+        image: cover?.type === 'external' ? cover.external.url : undefined,
         datetime: properties['Shoot Date/Time'].date.start,
         location: {
           name: notionTextStringify(properties.Name.title),

@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
       id: modelSlug,
       name: title,
       photo: {
-        image: model.cover?.type === 'external' ? model.cover.external.url.split('/')[3] : undefined,
+        image: model.cover?.type === 'external' ? model.cover.external.url : undefined,
       },
       dob: model.properties.DOB.date.start,
       gender: model.properties.Gender.select.name.toLowerCase() as Gender,

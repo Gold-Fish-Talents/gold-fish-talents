@@ -2,7 +2,7 @@
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "Gold Fish Talents",
   "version": "../package.json",
-  "identifier": "com.redcatpictures.bowl",
+  "identifier": "com.goldfishtalents.app",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://localhost:3000",

@@ -74,11 +74,11 @@ const shareAsset = ref<ShareAsset>({
   <main v-if="model" class="relative flex flex-col gap-8 p-2">
     <section id="hero" class="relative -left-2 -top-2 isolate h-screen w-screen">
       <NuxtImg
-        :src="`${model.photo.image}/-/scale_crop/360x720/50p,0p/`"
+        :src="extractCdnId(model.photo.image)"
         :alt="`${model.name} hero image`"
         :height="Math.round(720 / (1 / 2))"
-        :modifiers="imageModifiers"
-        :placeholder="[360, Math.round(360 / (1 / 2)), 'lightest', 25]"
+        :fit="imageModifiers.fit"
+        :placeholder="[0, Math.round(360 / (1 / 2)), 50, 5]"
         class="absolute inset-0 -z-10 h-full w-full object-cover object-top md:object-contain" />
       <!-- <CompositionOverlay /> -->
       <CardModelDetail class="absolute bottom-24 left-0" :model="model" :is-open="isModelDetailOpen" @is-open="(value) => (isModelDetailOpen = value)" />
