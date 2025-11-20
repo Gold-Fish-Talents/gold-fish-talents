@@ -89,6 +89,7 @@ jobs:
             VERSION=${{ steps.metadata.outputs.version }}
             BUILD_TIME=${{ steps.metadata.outputs.buildtime }}
             SITE_URL=${{ vars.SITE_URL }}
+            CDN_URL=${{ vars.CDN_URL }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 

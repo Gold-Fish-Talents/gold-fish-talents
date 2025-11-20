@@ -1,6 +1,6 @@
 export interface ShareAsset {
   name: string
-  imageUrl: string
+  imageUrl?: string
   url: string
 }
 
@@ -14,12 +14,13 @@ export default async function (asset: ShareAsset) {
   }
 
   try {
-    const content = await $fetch<Blob>(asset.imageUrl, {
-      responseType: 'blob',
-    })
-    if (!content) throw createError({ message: 'Content is null' })
+    const content = asset.imageUrl
+      ? await $fetch<Blob>(asset.imageUrl, {
+          responseType: 'blob',
+        })
+      : undefined
 
-    const files = [new File([content], `${asset.name}.jpg`, { type: 'image/jpeg' })]
+    const files = content ? [new File([content], `${asset.name}.jpg`, { type: 'image/jpeg' })] : undefined
     await share({
       title: asset.name,
       text: `${asset.name}\n`,

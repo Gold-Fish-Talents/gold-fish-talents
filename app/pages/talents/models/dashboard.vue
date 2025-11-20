@@ -5,7 +5,7 @@ definePageMeta({
 })
 
 const {
-  public: { siteUrl },
+  public: { siteUrl, cdnUrl },
 } = useRuntimeConfig()
 
 const { proxy: gaProxy } = useScriptGoogleAnalytics()
@@ -28,7 +28,7 @@ const urls: {
 const title = `${data.value?.name}`
 const shareAsset = ref<ShareAsset>({
   name: title,
-  imageUrl: `https://ucarecdn.com/${data.value?.photo.image}/-/format/jpeg/-/scale_crop/720x960/50p,0p/`,
+  imageUrl: `${cdnUrl}/${data.value?.photo.image}/-/format/jpeg/-/scale_crop/720x960/50p,0p/`,
   url: `${siteUrl}/talents/models/${data.value?.id}`,
 })
 

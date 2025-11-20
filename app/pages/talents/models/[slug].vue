@@ -4,7 +4,7 @@ definePageMeta({
 })
 
 const {
-  public: { siteUrl },
+  public: { siteUrl, cdnUrl },
 } = useRuntimeConfig()
 
 const route = useRoute()
@@ -18,7 +18,7 @@ const videos = model.value.projects[0]?.media.video
 
 const title = `${model.value?.name}`
 const description = `${model.value?.description}`
-const imageUrl = `https://ucarecdn.com/${model.value?.photo.image}/-/setfill/9d9d9d/-/crop/face/300px300p/50p,50p/-/resize/x1024/`
+const imageUrl = `${cdnUrl}/h_1024/${model.value?.photo.image}`
 
 useSeoMeta({
   title: title,
@@ -65,7 +65,6 @@ onMounted(() => {
 
 const shareAsset = ref<ShareAsset>({
   name: title,
-  imageUrl: `https://ucarecdn.com/${model.value?.photo.image}/-/format/jpeg/-/scale_crop/720x960/50p,0p/`,
   url: `${siteUrl}/talents/models/${slug}`,
 })
 </script>

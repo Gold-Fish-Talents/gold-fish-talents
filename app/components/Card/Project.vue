@@ -4,7 +4,7 @@ import { parseISO, format, isBefore, startOfDay, addDays } from 'date-fns'
 const props = defineProps<{ project: Project }>()
 
 const {
-  public: { siteUrl },
+  public: { siteUrl, cdnUrl },
 } = useRuntimeConfig()
 
 const dateObj = computed(() => parseISO(props.project.datetime))
@@ -20,7 +20,7 @@ async function downloadMedia(url: string | Source[], filename: string, type: 'ph
   let finalUrl = ''
 
   if (type === 'photo') {
-    finalUrl = `https://ucarecdn.com/${url}/`
+    finalUrl = `${cdnUrl}/${url}/`
   } else {
     if (Array.isArray(url)) {
       // find 1440p + AVC format
