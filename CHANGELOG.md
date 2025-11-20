@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.3.7
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.6...v0.3.7)
+
+### 🩹 Fixes
+
+- Dockerfile updated ([f7850d9](https://github.com/Algostract/gold-fish-talents/commit/f7850d9))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.3.6
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.5...v0.3.6)
