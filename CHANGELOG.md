@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.3.5
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.4...v0.3.5)
+
+### 🩹 Fixes
+
+- Migrate from old cdn to new cdn ([007fc18](https://github.com/Algostract/gold-fish-talents/commit/007fc18))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.3.4
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.3...v0.3.4)
