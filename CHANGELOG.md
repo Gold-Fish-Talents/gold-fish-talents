@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.3.6
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.5...v0.3.6)
+
+### 🩹 Fixes
+
+- Hardcoded cdn url removed ([186aece](https://github.com/Algostract/gold-fish-talents/commit/186aece))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.3.5
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.4...v0.3.5)
