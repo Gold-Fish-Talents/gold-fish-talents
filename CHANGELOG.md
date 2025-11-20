@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.3.8
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.7...v0.3.8)
+
+### 🩹 Fixes
+
+- Video gallery fixed ([17ca74b](https://github.com/Algostract/gold-fish-talents/commit/17ca74b))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.3.7
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.6...v0.3.7)
