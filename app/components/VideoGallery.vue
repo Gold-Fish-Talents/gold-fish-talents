@@ -14,12 +14,19 @@ function onIntersectionObserver([entry]: IntersectionObserverEntry[]) {
 
 useIntersectionObserver(featuredVideos, onIntersectionObserver)
 
+const isMuted = ref(true)
+
+function toggleMute() {
+  isMuted.value = !isMuted.value
+}
+const filterVideos = computed(() => props.videos.filter(({ featured }) => featured).toSorted((a, b) => a.featured! - b.featured!))
+
 const activeVideoIndex = ref(0)
-const activeVideo = computed(() => ({ ...props.videos[activeVideoIndex.value]! }))
+const activeVideo = computed(() => ({ ...filterVideos.value[activeVideoIndex.value]! }))
 const activeVideoProgress = ref(0)
 
 async function updateVideoIndex(step = 1) {
-  const total = props.videos.length
+  const total = filterVideos.value.length
   activeVideoProgress.value = 0
   activeVideoIndex.value = (activeVideoIndex.value + step + total) % total
 }
@@ -28,6 +35,28 @@ const videoContainerWrapper = useTemplateRef<HTMLDivElement>('video-container-wr
 
 const { orientation: deviceOrientation } = useScreenOrientation()
 
+/*
+const videoRef = computed(() => videoContainerRef.value?.videoRef as HTMLVideoElement)
+const { isFullscreen, toggle } = useFullscreen(videoRef)
+
+async function toggleFullScreen() {
+  if (!videoRef.value) return
+  await toggle()
+
+  videoRef.value.muted = !isFullscreen.value
+  videoRef.value.play()
+}
+*/
+
+/*
+device type | device orientation | video orientation | final orientation
+width < height      | portrait           | portrait          | portrait
+width < height      | portrait           | landscape         | landscape
+width < height      | landscape          | portrait          | landscape
+width < height      | landscape          | landscape         | landscape
+width >= height     | landscape          | portrait          | portrait
+width >= height     | landscape          | landscape         | landscape
+*/
 const { width, height } = useWindowSize()
 const { x } = useMouseInElement(videoContainerWrapper)
 
@@ -58,7 +87,7 @@ function slideClick() {
 
 <template>
   <section id="video-gallery" ref="video-gallery" class="relative -mx-2 h-fit w-[calc(100%+16px)]">
-    <div v-if="videos.length" ref="video-container-wrapper" class="relative left-1/2 flex h-screen -translate-x-1/2 items-center justify-center overflow-hidden bg-black">
+    <div v-if="filterVideos.length" ref="video-container-wrapper" class="relative left-1/2 flex h-screen -translate-x-1/2 items-center justify-center overflow-hidden bg-black">
       <ClientOnly>
         <NuxtVideo
           :key="activeVideoIndex"
@@ -70,16 +99,23 @@ function slideClick() {
           controls-list="nodownload"
           :autoplay="isAutoplay"
           :state="isPlay ? 'play' : 'pause'"
-          :muted="true"
+          :muted="isMuted"
           :playsinline="true"
           preload="metadata"
-          :loop="videos.length == 1"
           @progress="(value) => (activeVideoProgress = value)"
           @ended="updateVideoIndex()"
           @click="slideClick" />
       </ClientOnly>
-      <StatusBar :total="videos.length" :active-index="activeVideoIndex" :active-percent="activeVideoProgress" class="absolute left-1/2 top-8 z-0 w-full -translate-x-1/2 px-4 md:px-16" />
+      <!-- @click="toggleFullScreen()" -->
+      <StatusBar :total="filterVideos.length" :active-index="activeVideoIndex" :active-percent="activeVideoProgress" class="absolute left-1/2 top-8 z-0 w-full -translate-x-1/2 px-4 md:px-16" />
       <ButtonSlide class="absolute bottom-20 left-1/2 z-10 -translate-x-1/2 md:bottom-12 md:left-16 md:translate-x-0" @click="(value) => updateVideoIndex(value === 'left' ? -1 : 1)" />
+      <NuxtIcon
+        v-for="iconName in ['muted', 'unmuted']"
+        :key="iconName"
+        :name="`local:speaker-${iconName}`"
+        class="absolute right-4 top-16 z-10 rounded-full bg-white fill-black p-1 text-[20px] md:right-16 md:text-[28px]"
+        :class="{ hidden: isMuted ? iconName == 'unmuted' : iconName == 'muted' }"
+        @click="toggleMute" />
       <Transition name="fade" mode="out-in" appear>
         <div
           v-if="!!sliderIndicatorDirection"

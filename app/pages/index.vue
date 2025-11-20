@@ -33,7 +33,7 @@ const featuredVideo = {
   id: 'featured-video-000-000',
   title: 'featured-video-000-000',
   description: 'The Hero Video featuring of all Gold Fish Talents projects',
-  poster: `${cdnUrl}/media/image/w_1920&h_1080/featured-video-000-000-landscape`,
+  poster: `${cdnUrl}/media/image/s_720x1280/featured-video-000-000-portrait`,
   sources: videoGenerateSources('featured-video-000-000', heroPreset),
   type: 'hero',
 }

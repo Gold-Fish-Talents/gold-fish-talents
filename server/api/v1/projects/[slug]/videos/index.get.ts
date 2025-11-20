@@ -1,119 +1,5 @@
 import { z } from 'zod'
 
-export const landscapePreset: FileSources = {
-  av1: {
-    type: 'video/webm',
-    '720p': ['landscape'],
-    '1080p': ['landscape'],
-    '1440p': ['landscape'],
-  },
-  vp9: {
-    type: 'video/webm',
-    '720p': ['landscape'],
-    '1080p': ['landscape'],
-    '1440p': ['landscape'],
-  },
-  avc: {
-    type: 'video/mp4',
-    '720p': ['landscape'],
-    '1080p': ['landscape'],
-    '1440p': ['landscape'],
-  },
-  hevc: {
-    type: 'video/mp4',
-    '720p': ['landscape'],
-    '1080p': ['landscape'],
-    '1440p': ['landscape'],
-  },
-}
-
-export const portraitPreset: FileSources = {
-  av1: {
-    type: 'video/webm',
-    '720p': ['portrait'],
-    '1080p': ['portrait'],
-    '1440p': ['portrait'],
-  },
-  vp9: {
-    type: 'video/webm',
-    '720p': ['portrait'],
-    '1080p': ['portrait'],
-    '1440p': ['portrait'],
-  },
-  avc: {
-    type: 'video/mp4',
-    '720p': ['portrait'],
-    '1080p': ['portrait'],
-    '1440p': ['portrait'],
-  },
-  hevc: {
-    type: 'video/mp4',
-    '720p': ['portrait'],
-    '1080p': ['portrait'],
-    '1440p': ['portrait'],
-  },
-}
-
-export const heroPreset: FileSources = (() => {
-  const merged: FileSources = {}
-
-  for (const codec of codecs.toReversed()) {
-    merged[codec] = { type: portraitPreset[codec]!.type }
-    for (const res of resolutions.toReversed()) {
-      merged[codec]![res] = [...portraitPreset[codec]![res]!, ...landscapePreset[codec]![res]!]
-    }
-  }
-
-  return merged
-})()
-
-// Use explicit RFC 6381 codec strings so browsers can quickly reject unsupported sources; for HEVC, tag as "hvc1" (not "hev1") to avoid black video on Apple decoders
-function buildType(codec: Codec, containerMime: string): string {
-  switch (codec) {
-    case 'avc':
-      return 'video/mp4; codecs="avc1, mp4a.40.2"'
-    case 'hevc':
-      return 'video/mp4; codecs="hvc1, mp4a.40.2"'
-    case 'vp9':
-      return 'video/webm; codecs="vp9, opus"'
-    case 'av1':
-      return containerMime === 'video/mp4' ? 'video/mp4; codecs="av01, mp4a.40.2"' : 'video/webm; codecs="av01, opus"'
-  }
-}
-
-export function convertSources(name: string, sources: FileSources): Source[] {
-  const {
-    public: { siteUrl },
-  } = useRuntimeConfig()
-  const result: Source[] = []
-  for (const codec of Object.keys(sources) as Codec[]) {
-    const codecSources = sources[codec]
-    if (!codecSources) continue
-    const mimeType = codecSources.type
-    const typeWithCodecs = buildType(codec, mimeType)
-    const extension = mimeType === 'video/webm' ? 'webm' : mimeType === 'video/mp4' ? 'mp4' : ''
-    const resolutionKeys = Object.keys(codecSources).filter((key) => key !== 'type') as Resolution[]
-    for (const resolution of resolutionKeys) {
-      const orientations = codecSources[resolution]
-      if (!orientations || !Array.isArray(orientations)) continue
-      const hasBoth = orientations.includes('landscape') && orientations.includes('portrait')
-      for (const orientation of orientations) {
-        const media = hasBoth ? (orientation === 'landscape' ? '(orientation: landscape)' : '(orientation: portrait)') : ''
-        const src = `${siteUrl}/media/video/${name}-${codec}-${resolution}-${orientation}.${extension}`
-        result.push({
-          src,
-          type: typeWithCodecs,
-          orientation,
-          media,
-          codec,
-          resolution,
-        })
-      }
-    }
-  }
-  return result
-}
-
 export default defineCachedEventHandler<Promise<Video[]>>(
   async (event) => {
     try {
@@ -171,7 +57,7 @@ export default defineCachedEventHandler<Promise<Video[]>>(
               title: notionTextStringify(properties.Name.title),
               description: notionTextStringify(properties.Description.rich_text),
               poster: cover?.type === 'external' ? cover.external.url : undefined,
-              sources: convertSources(slug, slug.includes('featured-video') ? heroPreset : aspectRatio < 1 ? portraitPreset : landscapePreset),
+              sources: videoGenerateSources(slug, slug.includes('featured-video') ? heroPreset : aspectRatio < 1 ? portraitPreset : landscapePreset),
               type: slug.includes('featured-video') ? 'hero' : 'feature',
               featured: properties.Featured.checkbox,
               projectId: properties.Project.relation[0].id,

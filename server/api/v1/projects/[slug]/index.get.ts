@@ -1,5 +1,4 @@
 import z from 'zod'
-import { convertSources, heroPreset, landscapePreset, portraitPreset } from '~~/server/api/v1/projects/[slug]/videos/index.get'
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
@@ -75,7 +74,7 @@ export default defineEventHandler(async (event) => {
           title: notionTextStringify(properties.Name.title),
           description: notionTextStringify(properties.Description.rich_text),
           poster: cover?.type === 'external' ? cover.external.url : undefined,
-          sources: convertSources(slug, slug.includes('featured-video') ? heroPreset : aspectRatio < 1 ? portraitPreset : landscapePreset),
+          sources: videoGenerateSources(slug, slug.includes('featured-video') ? heroPreset : aspectRatio < 1 ? portraitPreset : landscapePreset),
           type: slug.includes('featured-video') ? 'hero' : 'feature',
           featured: properties.Featured.checkbox,
           projectId: properties.Project.relation[0].id,
