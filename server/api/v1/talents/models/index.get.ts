@@ -1,6 +1,6 @@
 import type { TypesenseModel } from '~~/server/api/search/sync.post'
 
-export default defineEventHandler<Promise<{ models: Model[]; count: number; page: number; perPage: number }>>(async (event) => {
+export default defineEventHandler<Promise<{ data: Model[]; count: number; page: number; perPage: number }>>(async (event) => {
   try {
     const queryParams = getQuery<PaginatedSearchParams>(event)
 
@@ -10,14 +10,14 @@ export default defineEventHandler<Promise<{ models: Model[]; count: number; page
       .search({
         q: queryParams.query?.trim() || '*',
         query_by: queryParams.queryBy || 'name',
-        filter_by: `status:=Active&&${queryParams.filterBy}`,
-        sort_by: `isFeatured:desc,${queryParams.sortBy}`,
+        filter_by: `status:=Active` + (queryParams.filterBy ? `&&${queryParams.filterBy}` : ''),
+        sort_by: `isFeatured:DESC` + (queryParams.sortBy ? `,${queryParams.sortBy}` : ''),
         per_page: queryParams.perPage || 8,
         page: queryParams.page || 1,
       })
 
     return {
-      models:
+      data:
         response.hits?.map<Model>(({ document }) => ({
           id: document.id,
           name: document.name,

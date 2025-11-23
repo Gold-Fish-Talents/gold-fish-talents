@@ -189,7 +189,7 @@ export default defineNuxtConfig({
     manifest: {
       name: 'Gold Fish Talents',
       short_name: 'Gold Fish Talents',
-      description: 'Locality‑focused, talent marketplace marketplace where models, makeup artist, designer etc can be found for commercial shoot',
+      description: 'E2E platform empowering brands to discover, manage, and collaborate with creative talents',
       theme_color: '#FFD400',
       background_color: '#FFD400',
       // orientation: 'natural',

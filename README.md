@@ -12,7 +12,7 @@
 
 ![Landing](public/previews/landing.webp)
 
-> Locality‑focused, talent marketplace where models, voice actors, makeup artist, designer etc can be found for commercial shoot
+> E2E platform empowering brands to discover, manage, and collaborate with creative talents
 
 - 📦 SSR
 - 🖼️ OG Tags

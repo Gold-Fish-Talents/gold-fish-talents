@@ -42,7 +42,7 @@ const {
 })
 
 const totalResult = reactive<{ models: Model[]; count: number; page: number; perPage: number }>({
-  models: structuredClone(result.value.models),
+  models: structuredClone(result.value.data),
   count: result.value.count,
   page: result.value.page,
   perPage: result.value.perPage,

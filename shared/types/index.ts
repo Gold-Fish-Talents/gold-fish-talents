@@ -142,7 +142,7 @@ export interface Video {
 }
 
 /* Server Only */
-export const resourceTypes = ['project', 'model', 'studio', 'asset', 'redcatpicturesProject', 'redcatpicturesAsset'] as const
+export const resourceTypes = ['project', 'model', 'studio', 'asset', 'terms', 'privacy', 'cancellation', 'license'] as const
 
 export type ResourceType = (typeof resourceTypes)[number]
 

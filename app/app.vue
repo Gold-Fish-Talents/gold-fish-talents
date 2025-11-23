@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const title = `Gold Fish Talents`
-const description = `Locality‑focused, talent marketplace marketplace where models, makeup artist, designer etc can be found for commercial shoot`
+const description = `E2E platform empowering brands to discover, manage, and collaborate with creative talents`
 
 const {
   app: { buildTime },

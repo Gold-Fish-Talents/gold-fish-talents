@@ -14,11 +14,6 @@ function onIntersectionObserver([entry]: IntersectionObserverEntry[]) {
 
 useIntersectionObserver(featuredVideos, onIntersectionObserver)
 
-const isMuted = ref(true)
-
-function toggleMute() {
-  isMuted.value = !isMuted.value
-}
 const filterVideos = computed(() => props.videos.filter(({ featured }) => featured).toSorted((a, b) => a.featured! - b.featured!))
 
 const activeVideoIndex = ref(0)
@@ -109,13 +104,6 @@ function slideClick() {
       <!-- @click="toggleFullScreen()" -->
       <StatusBar :total="filterVideos.length" :active-index="activeVideoIndex" :active-percent="activeVideoProgress" class="absolute left-1/2 top-8 z-0 w-full -translate-x-1/2 px-4 md:px-16" />
       <ButtonSlide class="absolute bottom-20 left-1/2 z-10 -translate-x-1/2 md:bottom-12 md:left-16 md:translate-x-0" @click="(value) => updateVideoIndex(value === 'left' ? -1 : 1)" />
-      <NuxtIcon
-        v-for="iconName in ['muted', 'unmuted']"
-        :key="iconName"
-        :name="`local:speaker-${iconName}`"
-        class="absolute right-4 top-16 z-10 rounded-full bg-white fill-black p-1 text-[20px] md:right-16 md:text-[28px]"
-        :class="{ hidden: isMuted ? iconName == 'unmuted' : iconName == 'muted' }"
-        @click="toggleMute" />
       <Transition name="fade" mode="out-in" appear>
         <div
           v-if="!!sliderIndicatorDirection"

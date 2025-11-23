@@ -5,7 +5,7 @@ export default defineSitemapEventHandler(async () => {
 
   return settled.flatMap((res) => {
     if (res.status === 'fulfilled') {
-      return res.value.map((item) => ({ loc: item.url, _sitemap: 'sitemap' }) satisfies SitemapUrlInput)
+      return res.value.data.map((item) => ({ loc: item.url, _sitemap: 'sitemap' }) satisfies SitemapUrlInput)
     } else {
       console.warn('Failed to fetch sitemap entries')
       return []
