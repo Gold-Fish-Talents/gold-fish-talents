@@ -18,7 +18,7 @@ const videos = model.value.projects[0]?.media.video
 
 const title = `${model.value?.name}`
 const description = `${model.value?.description}`
-const imageUrl = `${cdnUrl}/h_1024/${model.value?.photo.image}`
+const imageUrl = `${cdnUrl}/h_1024/${extractCdnId(model.value?.photo.image)}`
 
 useSeoMeta({
   title: title,
