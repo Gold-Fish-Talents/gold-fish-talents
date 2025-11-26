@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.3.9
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.8...v0.3.9)
+
+### 🚀 Enhancements
+
+- Add android project structure and configuration for Gold Fish Talents app ([8c2f413](https://github.com/Algostract/gold-fish-talents/commit/8c2f413))
+
+### 🩹 Fixes
+
+- OgImage and app icon ([59baf8d](https://github.com/Algostract/gold-fish-talents/commit/59baf8d))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.3.8
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.7...v0.3.8)
