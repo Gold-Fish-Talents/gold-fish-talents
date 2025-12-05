@@ -37,7 +37,7 @@ useSchemaOrg([
   sources: videoGenerateSources('featured-video-000-000', heroPreset),
   type: 'hero',
 } */
-const { data: featuredTalents } = await useAPI('/api/v1/talents/models', {
+const { data: featuredTalents } = await useFetch('/api/v1/talents/models', {
   query: {
     query: '',
     queryBy: 'name',

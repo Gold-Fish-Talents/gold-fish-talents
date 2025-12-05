@@ -18,7 +18,7 @@ function onOauthSignIn() {
   console.log('Google sign in requested')
 }
 
-const { status, data, error, execute } = useAPI('/auth/email', {
+const { status, data, error, execute } = useFetch('/auth/email', {
   method: 'POST',
   body: r$.$value,
   immediate: false,

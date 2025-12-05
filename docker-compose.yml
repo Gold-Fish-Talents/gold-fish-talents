@@ -13,7 +13,7 @@ services:
       - static:/app/static
       - data:/app/.data
     ports:
-      - 3000:3000
+      - 4400:3000
 
   typesense:
     image: typesense/typesense:29.0

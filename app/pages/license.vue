@@ -19,7 +19,7 @@ useSeoMeta({
   ogUrl: `${siteUrl}/license`,
 })
 
-const { data } = await useAPI<{
+const { data } = await useFetch<{
   license: {
     content: string
     lastUpdated: string

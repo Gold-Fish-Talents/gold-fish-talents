@@ -9,7 +9,7 @@ const {
 
 const route = useRoute()
 const slug = route.params.slug!.toString()
-const { data: model } = await useAPI(`/api/v1/talents/models/${slug}`)
+const { data: model } = await useFetch(`/api/v1/talents/models/${slug}`)
 if (!model.value) {
   throw createError({ statusCode: 404, statusMessage: 'Model not found' })
 }

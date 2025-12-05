@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { AdditiveBlending, DoubleSide, Color, BufferGeometry, Float32BufferAttribute, BackSide } from 'three'
-import { useTextures } from '@tresjs/cientos'
 
 const vertexShader = `
   varying vec2 vUv;
@@ -183,10 +182,6 @@ onMounted(() => {
   frameId = requestAnimationFrame(animate)
 })
 
-const texturePaths = ['/images/8081_earth.webp']
-
-const { textures } = useTextures(texturePaths)
-
 // Atmosphere Glow Shaders
 const atmosphereVertexShader = `
   varying vec3 vNormal;
@@ -221,7 +216,6 @@ const atmosphereFragmentShader = `
     <TresCanvas clear-color="#030719">
       <!-- Camera -->
       <TresPerspectiveCamera :args="[45, 1, 0.1, 1000]" :position="[0, 0, 10]" />
-
       <!-- Light -->
       <!-- 1. Subtle ambient for base illumination -->
       <!-- <TresAmbientLight :intensity="0.05" color="#0a1628" /> -->
@@ -239,7 +233,7 @@ const atmosphereFragmentShader = `
       <!-- <TresPointLight :position="[220, 260, -80]" :intensity="40" :distance="650" :decay="1.7" color="#ff8c19" /> -->
       <!-- <TresPointLight :position="[-140, 260, -40]" :intensity="38" :distance="600" :decay="1.7" color="#f472b6" /> -->
       <!-- <TresPointLight :position="[40, 260, -260]" :intensity="42" :distance="700" :decay="1.7" color="#38bdf8" /> -->
-      <!-- 1. Nebula (Background - furthest) -->
+      <!--  Nebula (Background - furthest) -->
       <TresGroup :position="[0, 0, -50]">
         <TresMesh :rotation="[1.2, -0.2, 0.0]" :scale="[1.2, 1.2, 1]">
           <TresPlaneGeometry :args="[120, 120]" />
@@ -253,7 +247,7 @@ const atmosphereFragmentShader = `
             :side="DoubleSide" />
         </TresMesh>
       </TresGroup>
-      <!-- 2. Stars (Middle layer - behind earth) -->
+      <!-- Stars (Middle layer - behind earth) -->
       <TresGroup :position="[0, 0, -10]">
         <TresPoints :geometry="starGeometry">
           <TresShaderMaterial
@@ -266,11 +260,6 @@ const atmosphereFragmentShader = `
             :vertex-colors="false" />
         </TresPoints>
       </TresGroup>
-      <!-- 3. Earth (Foreground - closest) -->
-      <TresMesh v-if="textures[0]" :position="[0, 0, 0]" :rotation="[0, -0.5, 0]">
-        <TresSphereGeometry :args="[2.5, 64, 64]" />
-        <TresMeshStandardMaterial :map="textures[0]" />
-      </TresMesh>
       <!-- Atmosphere Glow -->
       <TresMesh :position="[0, 0, 0]" :rotation="[0, -0.5, 0.3]">
         <TresSphereGeometry :args="[2.65, 64, 64]" />

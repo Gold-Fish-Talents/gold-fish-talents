@@ -10,7 +10,7 @@ const {
 
 const { proxy: gaProxy } = useScriptGoogleAnalytics()
 
-const { data, refresh } = await useAPI('/api/v1/talents/models/dashboard')
+const { data, refresh } = await useFetch('/api/v1/talents/models/dashboard')
 
 type Action = 'share' | 'models' | 'highlight'
 
