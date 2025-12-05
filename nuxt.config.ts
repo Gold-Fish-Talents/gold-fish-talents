@@ -56,6 +56,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@regle/nuxt',
+    '@tresjs/nuxt',
     '@vite-pwa/nuxt',
     '@vueuse/nuxt',
     'nuxt-auth-utils',

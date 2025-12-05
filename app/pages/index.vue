@@ -7,7 +7,7 @@ const title = `Gold Fish Talents`
 const description = `E2E platform empowering brands to discover, manage, and collaborate with creative talents`
 
 const {
-  public: { siteUrl, cdnUrl },
+  public: { siteUrl },
 } = useRuntimeConfig()
 const imageUrl = `${siteUrl}/previews/landing.webp`
 
@@ -29,14 +29,14 @@ useSchemaOrg([
   }),
 ])
 
-const featuredVideo = {
+/* const featuredVideo = {
   id: 'featured-video-000-000',
   title: 'featured-video-000-000',
   description: 'The Hero Video featuring of all Gold Fish Talents projects',
   poster: `${cdnUrl}/media/image/s_720x1280/featured-video-000-000-portrait`,
   sources: videoGenerateSources('featured-video-000-000', heroPreset),
   type: 'hero',
-}
+} */
 const { data: featuredTalents } = await useFetch('/api/v1/talents/models', {
   query: {
     query: '',
@@ -55,14 +55,15 @@ const { data: featuredTalents } = await useFetch('/api/v1/talents/models', {
 </script>
 
 <template>
-  <div class="relative">
-    <SectionHero :featured-video :models="featuredTalents.data" />
-    <AppFooter />
+  <div class="relative min-h-screen">
+    <SectionHero />
+    <SectionSpotlight />
+    <SectionTrustedBrands class="mt-12 md:mt-20" />
+    <SectionDiscover class="mt-16 md:mt-24" />
+    <SectionMeetStars class="mt-16 md:mt-24" :models="featuredTalents?.models ?? []" />
+    <SectionOurWork class="mt-16 md:mt-24" />
+    <SectionCTA class="mt-16 md:mt-24" />
   </div>
 </template>
 
-<style>
-.overlay {
-  @apply after:absolute after:inset-0 after:z-0 after:bg-gradient-to-b after:from-black/0 after:from-[50%] after:to-black/80 after:to-[100%] after:content-[''];
-}
-</style>
+<style></style>

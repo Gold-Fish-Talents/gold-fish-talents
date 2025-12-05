@@ -7,8 +7,6 @@ services:
     volumes:
       - gold-fish-talents_data:/app/.data
       - gold-fish-talents_static:/app/static
-    expose:
-      - 3000
     networks:
       - internal
     deploy:

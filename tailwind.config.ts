@@ -15,6 +15,8 @@ export default <Partial<Config>>{
       '3xl': ['2.5rem', '3.125rem'],
       '4xl': ['3rem', '3.625rem'],
       '5xl': ['3.5rem', '4.1875rem'],
+      '6xl': ['3.75rem', '4.5rem'],
+      '7xl': ['4.5rem', '5.375rem'],
     },
     fontFamily: {
       main: ['Plus Jakarta Sans', 'sans-serif'],
