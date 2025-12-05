@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.4.2
+
+### 💅 Refactors
+
+- Replace useFetch with useAPI for consistent API handling ([1f60eb1](https://github.com/Algostract/gold-fish-talents/commit/1f60eb1))
+
+### 🏡 Chore
+
+- Apply code fixes [skip ci] ([ba91a09](https://github.com/Algostract/gold-fish-talents/commit/ba91a09))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.1
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.0...v0.4.1)
