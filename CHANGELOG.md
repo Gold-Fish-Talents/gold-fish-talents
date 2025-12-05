@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.4.0
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.9...v0.4.0)
+
+### 🚀 Enhancements
+
+- ⚠️ Landing page refactored to cosmic ocean style ([53d031d](https://github.com/Algostract/gold-fish-talents/commit/53d031d))
+
+### 🩹 Fixes
+
+- Update texture path to use raw GitHub URL and simplify shader material syntax ([717b0ff](https://github.com/Algostract/gold-fish-talents/commit/717b0ff))
+- Replace JPG textures with WEBP format for improved performance and update texture paths ([cf35d87](https://github.com/Algostract/gold-fish-talents/commit/cf35d87))
+- Update earth texture files to WEBP format for improved performance ([b360abd](https://github.com/Algostract/gold-fish-talents/commit/b360abd))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️ Landing page refactored to cosmic ocean style ([53d031d](https://github.com/Algostract/gold-fish-talents/commit/53d031d))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.3.9
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.8...v0.3.9)
