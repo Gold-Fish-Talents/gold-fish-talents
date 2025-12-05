@@ -30,7 +30,7 @@ const {
   data: result,
   status,
   refresh,
-} = useFetch('/api/v1/talents/models', {
+} = useAPI('/api/v1/talents/models', {
   query: queryParams,
   default: () => ({
     models: [],

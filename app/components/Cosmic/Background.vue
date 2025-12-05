@@ -183,7 +183,7 @@ onMounted(() => {
   frameId = requestAnimationFrame(animate)
 })
 
-const texturePaths = ['https://raw.githubusercontent.com/Gold-Fish-Talents/gold-fish-talents/refs/heads/main/public/images/8081_earth.jpg']
+const texturePaths = ['/images/8081_earth.webp']
 
 const { textures } = useTextures(texturePaths)
 
