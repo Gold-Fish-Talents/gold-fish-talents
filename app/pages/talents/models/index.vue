@@ -33,7 +33,10 @@ const {
 } = useAPI('/api/v1/talents/models', {
   query: queryParams,
   default: () => ({
-    data: [] as Model[], count: 0, page: 1, perPage: 8
+    data: [] as Model[],
+    count: 0,
+    page: 1,
+    perPage: 8,
   }),
   watch: false,
 })
@@ -62,7 +65,7 @@ async function loadModels() {
   await refresh()
 
   console.log({
-    totalResult: totalResult.models
+    totalResult: totalResult.models,
   })
 
   totalResult.models.push(...result.value.data)
@@ -93,15 +96,16 @@ const isDrawerOpen = ref(false)
     <section class="hidden md:col-start-1 md:row-span-full md:block">NavBar</section>
     <div class="z-10 col-span-full col-start-1 row-start-1 m-4 flex justify-between gap-4 md:col-start-2 md:m-8">
       <SearchBar v-model="searchParams" placeholder="Search" class="w-full" />
-      <button class="size-fit rounded-lg bg-dark-500 fill-white p-1 text-[36px] text-white"
-        @click="isDrawerOpen = !isDrawerOpen">
+      <button class="size-fit rounded-lg bg-dark-500 fill-white p-1 text-[36px] text-white" @click="isDrawerOpen = !isDrawerOpen">
         <NuxtIcon name="local:slider" />
       </button>
       <DevOnly>
         <button @click="changeViewMode()">Toggle View</button>
       </DevOnly>
     </div>
-    <section v-show="viewMode === 'list'" v-infinite-scroll="[loadModels, { distance: 10 }]"
+    <section
+      v-show="viewMode === 'list'"
+      v-infinite-scroll="[loadModels, { distance: 10 }]"
       class="target scrollbar-hidden relative col-span-full col-start-1 block h-full items-center justify-items-center overflow-y-auto p-2 md:col-start-2">
       <div v-if="!totalResult.count && status === 'pending'">Loading Model</div>
       <div v-else-if="!totalResult.count && status === 'error'">Error loading Model</div>
@@ -110,23 +114,31 @@ const isDrawerOpen = ref(false)
         <div class="grid w-full grid-cols-2 gap-2 md:grid-cols-4 md:gap-8">
           <CardModel
             v-for="{ id, name, gender, age, fee, photo, rating, reviewCount, coordinate, isFeatured, url } in totalResult.models"
-            :id="id" :key="id" :name="name" :gender="gender" :age="age" :fee="fee" :photo="photo" :rating="rating"
-            :review-count="reviewCount" :coordinate="coordinate" :is-featured="isFeatured" :is-favorite="false"
+            :id="id"
+            :key="id"
+            :name="name"
+            :gender="gender"
+            :age="age"
+            :fee="fee"
+            :photo="photo"
+            :rating="rating"
+            :review-count="reviewCount"
+            :coordinate="coordinate"
+            :is-featured="isFeatured"
+            :is-favorite="false"
             :url="url" />
         </div>
       </div>
       <div v-if="totalResult.count && status === 'pending'">Loading more models</div>
     </section>
-    <section v-show="viewMode !== 'list'"
-      class="col-span-full col-start-1 row-span-full row-start-2 h-full p-2 md:col-start-2">
+    <section v-show="viewMode !== 'list'" class="col-span-full col-start-1 row-span-full row-start-2 h-full p-2 md:col-start-2">
       <ClientOnly>
         <MglMap :map-style="mapStyle" :center="center" :zoom="zoom" :attribution-control="false">
           <!-- <MglNavigationControl /> -->
           <!-- <MglFullscreenControl /> -->
           <!-- <MglScaleControl /> -->
           <MglGeolocateControl />
-          <MglMarker v-for="{ id, photo, name, coordinate, url } in totalResult.models" :key="id"
-            :coordinates="coordinate">
+          <MglMarker v-for="{ id, photo, name, coordinate, url } in totalResult.models" :key="id" :coordinates="coordinate">
             <template #marker>
               <MarkerModel :id="id" :photo="photo" :name="name" :url="url" />
             </template>
@@ -165,8 +177,7 @@ const isDrawerOpen = ref(false)
             <div class="grid grid-cols-2 grid-rows-2 gap-y-2">
               <span>Fee</span>
               <span class="justify-self-end">₹{{ filterBy.fee.value.min }} - ₹{{ filterBy.fee.value.max }}</span>
-              <AppSlider :limit="filterBy.fee.limit" :value="filterBy.fee.value" :step="500" class="col-span-2"
-                @update="onFeeUpdate" />
+              <AppSlider :limit="filterBy.fee.limit" :value="filterBy.fee.value" :step="500" class="col-span-2" @update="onFeeUpdate" />
             </div>
           </section>
         </div>
