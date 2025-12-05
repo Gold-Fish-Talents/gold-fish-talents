@@ -51,7 +51,7 @@ watch(
   }
 )
 
-const { status, execute } = useFetch('/api/v1/talents/models', {
+const { status, execute } = useAPI('/api/v1/talents/models', {
   method: 'POST',
   body: r$.$value,
   immediate: false,

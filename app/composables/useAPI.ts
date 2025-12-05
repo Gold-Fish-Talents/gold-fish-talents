@@ -1,8 +1,8 @@
 import type { UseFetchOptions } from 'nuxt/app'
 
-export function useAPI<T>(url: string | (() => string), options?: UseFetchOptions<T>) {
+export function useAPI<T>(url: string | (() => string), opts?: UseFetchOptions<T> | undefined) {
   return useFetch(url, {
-    ...options,
+    ...opts,
     $fetch: useNuxtApp().$api as typeof $fetch,
   })
 }

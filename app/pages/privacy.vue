@@ -21,7 +21,7 @@ useSeoMeta({
   ogUrl: `${siteUrl}/privacy`,
 })
 
-const { data } = await useFetch<{
+const { data } = await useAPI<{
   privacy: {
     content: string
     lastUpdated: string

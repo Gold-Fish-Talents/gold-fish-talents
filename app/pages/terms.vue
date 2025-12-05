@@ -19,7 +19,7 @@ useSeoMeta({
   ogUrl: `${siteUrl}/terms`,
 })
 
-const { data } = await useFetch<{
+const { data } = await useAPI<{
   terms: {
     content: string
     lastUpdated: string

@@ -19,7 +19,7 @@ useSeoMeta({
   ogUrl: `${siteUrl}/cancellation`,
 })
 
-const { data } = await useFetch<{
+const { data } = await useAPI<{
   cancellation: {
     content: string
     lastUpdated: string
