@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.1
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.0...v0.4.1)
+
+### 💅 Refactors
+
+- Removed earth and added useFetch instead of useAPI ([8e26932](https://github.com/Algostract/gold-fish-talents/commit/8e26932))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.0
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.3.9...v0.4.0)
