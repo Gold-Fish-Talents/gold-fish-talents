@@ -3,16 +3,21 @@ import { NotionToMarkdown } from 'notion-to-md'
 export default defineEventHandler(async () => {
   const config = useRuntimeConfig()
 
-  const termsPageId = (config.private.notionDbId as unknown as NotionDB).terms
+  const termsClientPageId = (config.private.notionDbId as unknown as NotionDB).termsClient
+  const termsTalentPageId = (config.private.notionDbId as unknown as NotionDB).termsTalent
   const privacyPageId = (config.private.notionDbId as unknown as NotionDB).privacy
   const cancellationPageId = (config.private.notionDbId as unknown as NotionDB).cancellation
   const licensePageId = (config.private.notionDbId as unknown as NotionDB).license
 
   const n2m = new NotionToMarkdown({ notionClient: notion })
 
-  const termsContent = (await notion.pages.retrieve({ page_id: termsPageId })) as unknown as NotionContent
-  const termsLastUpdated = termsContent.last_edited_time
-  const termsMarkdown = await notionPageToMarkdown(n2m, termsPageId, true)
+  const termsClientContent = (await notion.pages.retrieve({ page_id: termsClientPageId })) as unknown as NotionContent
+  const termsClientLastUpdated = termsClientContent.last_edited_time
+  const termsClientMarkdown = await notionPageToMarkdown(n2m, termsClientPageId, true)
+
+  const termsTalentContent = (await notion.pages.retrieve({ page_id: termsTalentPageId })) as unknown as NotionContent
+  const termsTalentLastUpdated = termsTalentContent.last_edited_time
+  const termsTalentMarkdown = await notionPageToMarkdown(n2m, termsTalentPageId, true)
 
   const privacyContent = (await notion.pages.retrieve({ page_id: privacyPageId })) as unknown as NotionContent
   const privacyLastUpdated = privacyContent.last_edited_time
@@ -28,8 +33,14 @@ export default defineEventHandler(async () => {
 
   return {
     terms: {
-      content: termsMarkdown,
-      lastUpdated: termsLastUpdated,
+      client: {
+        content: termsClientMarkdown,
+        lastUpdated: termsClientLastUpdated,
+      },
+      talent: {
+        content: termsTalentMarkdown,
+        lastUpdated: termsTalentLastUpdated,
+      },
     },
     privacy: {
       content: privacyMarkdown,

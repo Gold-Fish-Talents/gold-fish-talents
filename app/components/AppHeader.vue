@@ -4,7 +4,6 @@
       <div class="flex items-center gap-2">
         <NuxtLink to="/" class="font-semibold rounded-full bg-white/10 px-4 py-1 text-base tracking-wide"> Logo </NuxtLink>
       </div>
-
       <ul class="hidden items-center gap-6 text-xs font-regular md:flex">
         <li>
           <NuxtLink to="/services" class="hover:text-primary-400">Services</NuxtLink>

@@ -52,6 +52,7 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/test-utils/module',
     '@nuxtjs/color-mode',
+    '@nuxtjs/mdc',
     '@nuxtjs/seo',
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
@@ -92,6 +93,8 @@ export default defineNuxtConfig({
     '/images/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
     '/fonts/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
     '/api/**': { cors: true },
+    '/client-terms': { redirect: { to: '/terms/client', statusCode: 301 } },
+    '/talent-terms': { redirect: { to: '/terms/talent', statusCode: 301 } },
   },
   runtimeConfig: {
     app: {

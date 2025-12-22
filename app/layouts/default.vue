@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="flex min-h-screen w-screen flex-col items-center justify-start">
     <LazyAppHeader hydrate-on-idle />
