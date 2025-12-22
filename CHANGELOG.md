@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.4.3
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.2...v0.4.3)
+
+### 🚀 Enhancements
+
+- Add support for multiple terms pages and integrate @nuxtjs/mdc ([1f020ce](https://github.com/Algostract/gold-fish-talents/commit/1f020ce))
+
+### 🏡 Chore
+
+- Update nuxt.config.ts for media image baseURL and adjust native config formatting ([655fb7c](https://github.com/Algostract/gold-fish-talents/commit/655fb7c))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.2
 
 ### 💅 Refactors
