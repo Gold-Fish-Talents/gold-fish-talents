@@ -26,6 +26,18 @@ services:
     ports:
       - 8108:8108
 
+  browserless:
+    image: ghcr.io/browserless/chromium:latest
+    environment:
+      - CORS=true
+    networks:
+      - internal
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+
 volumes:
   static:
     driver: local

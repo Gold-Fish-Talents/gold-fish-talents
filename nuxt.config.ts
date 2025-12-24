@@ -83,8 +83,8 @@ export default defineNuxtConfig({
       tasks: true,
     },
     scheduledTasks: {
-      '*/3 * * * *': ['sync:cdn'],
-      '*/5 * * * *': ['sync:search'],
+      '*/3 * * * *': [],
+      '*/5 * * * *': ['sync:search', 'workflow:agreement-talent'],
     },
   },
   routeRules: {
@@ -95,6 +95,11 @@ export default defineNuxtConfig({
     '/api/**': { cors: true },
     '/client-terms': { redirect: { to: '/terms/client', statusCode: 301 } },
     '/talent-terms': { redirect: { to: '/terms/talent', statusCode: 301 } },
+    '/privacy-policy': { redirect: { to: '/privacy', statusCode: 301 } },
+    '/terms/**': { isr: 86400 },
+    '/privacy': { isr: 86400 },
+    '/cancellation': { isr: 86400 },
+    '/license': { isr: 86400 },
   },
   runtimeConfig: {
     app: {
@@ -172,7 +177,7 @@ export default defineNuxtConfig({
   },
   colorMode: {
     preference: 'dark',
-    fallback: 'dark',
+    fallback: 'light',
     classSuffix: '',
   },
   site: {
