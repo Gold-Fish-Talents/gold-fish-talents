@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.4
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.3...v0.4.4)
+
+### 🚀 Enhancements
+
+- Added workflow quotation ([bdfe0d5](https://github.com/Algostract/gold-fish-talents/commit/bdfe0d5))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.3
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.2...v0.4.3)
