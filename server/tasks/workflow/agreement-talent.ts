@@ -190,15 +190,15 @@ Email: [contact@goldfishtalents.com](mailto:contact@goldfishtalents.com) Phone: 
 **Talent Phone No:** ${talentDetails.phone.toString()}  
 **Talent Email:** [${talentDetails.email}](mailto:${talentDetails.email})   
 **PAN:** ${talentDetails.pan}  
-**GSTIN(optinal):** ${talentDetails.gstin}  
+**GSTIN (optinal):** ${talentDetails.gstin}  
 **Talent Date of Birth:** ${talentDetails.dob}    
 **Talent Profession:** ${talentDetails.profession} 
 
-**Bank Account Name:** ${talentDetails.bankAccountName}  
-**Bank Account Number:** ${talentDetails.bankAccountNumber}  
-**Bank IFSC:** ${talentDetails.bankIfsc}  
-**Bank Name:** ${talentDetails.bankName}  
-**Branch Name:** ${talentDetails.bankBranch}  
+**Bank Account Name (optional):** ${talentDetails.bankAccountName}  
+**Bank Account Number (optional):** ${talentDetails.bankAccountNumber}  
+**Bank IFSC (optional):** ${talentDetails.bankIfsc}  
+**Bank Name (optional):** ${talentDetails.bankName}  
+**Branch Name (optional):** ${talentDetails.bankBranch}  
 **UPI ID (optional):** ${talentDetails.upi}  
 
 ("Talent", "you")
@@ -225,6 +225,8 @@ By signing below, I acknowledge and agree that:
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
+***
+
 | For Gold Fish Talents   | For Talent              |
 | ------------------------| ----------------------- |
 | Authorized Signature:   | Signatory:              |
@@ -233,8 +235,7 @@ By signing below, I acknowledge and agree that:
 | Place:                  | Place:                  |
 
 
-_N.B: This Agreement consists of [8] pages including this one. Please sign all pages. Keep a copy
-for your records._
+_N.B: This Agreement consists of [8] pages including this one. Please sign all pages._
 `
   // Markdown → HTML
   const html = md.render(mdContent)
@@ -526,7 +527,7 @@ export default defineTask({
             ],
             pdfBuffer: pdf.fileBuffer,
             fields: [
-              { type: 'DATE', page: 1, x: 22.4, y: 74.3, width: 19.6, height: 3, recipient: goldfishtalentsDetails.email },
+              { type: 'DATE', page: 1, x: 22.4, y: 77, width: 19.6, height: 3, recipient: goldfishtalentsDetails.email },
               { type: 'SIGNATURE', page: 1, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
               { type: 'SIGNATURE', page: 2, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
               { type: 'SIGNATURE', page: 3, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
@@ -553,18 +554,16 @@ export default defineTask({
                     { id: 6, checked: false, value: 'I indemnify GFT from claims arising from my performance failures or misconduct.' },
                     { id: 7, checked: false, value: 'All information I provided is accurate and complete.' },
                   ],
-                  validationRule: 'Exactly',
-                  validationNumber: 7,
                 },
               },
-              { type: 'SIGNATURE', page: 7, x: 61, y: 54.77, width: 19.6, height: 4, recipient: talentDetails.email },
-              { type: 'NAME', page: 7, x: 61, y: 60.15, width: 19.6, height: 4, recipient: talentDetails.email },
-              { type: 'DATE', page: 7, x: 61, y: 65.53, width: 19.6, height: 4, recipient: talentDetails.email },
+              { type: 'SIGNATURE', page: 8, x: 61, y: 54.77 - 41.05, width: 19.6, height: 4, recipient: talentDetails.email },
+              { type: 'NAME', page: 8, x: 61, y: 60.15 - 41.05, width: 19.6, height: 4, recipient: talentDetails.email },
+              { type: 'DATE', page: 8, x: 61, y: 65.53 - 41.05, width: 19.6, height: 4, recipient: talentDetails.email },
               {
                 type: 'TEXT',
-                page: 7,
+                page: 8,
                 x: 61,
-                y: 70.91,
+                y: 70.91 - 41.05,
                 width: 19.6,
                 height: 4,
                 recipient: talentDetails.email,
@@ -577,14 +576,14 @@ export default defineTask({
                   textAlign: 'left',
                 },
               },
-              { type: 'SIGNATURE', page: 7, x: 30, y: 54.77, width: 19.6, height: 4, recipient: goldfishtalentsDetails.email },
-              { type: 'NAME', page: 7, x: 30, y: 60.15, width: 19.6, height: 4, recipient: goldfishtalentsDetails.email },
-              { type: 'DATE', page: 7, x: 30, y: 65.53, width: 19.6, height: 4, recipient: goldfishtalentsDetails.email },
+              { type: 'SIGNATURE', page: 8, x: 30, y: 54.77 - 41.05, width: 19.6, height: 4, recipient: goldfishtalentsDetails.email },
+              { type: 'NAME', page: 8, x: 30, y: 60.15 - 41.05, width: 19.6, height: 4, recipient: goldfishtalentsDetails.email },
+              { type: 'DATE', page: 8, x: 30, y: 65.53 - 41.05, width: 19.6, height: 4, recipient: goldfishtalentsDetails.email },
               {
                 type: 'TEXT',
-                page: 7,
+                page: 8,
                 x: 30,
-                y: 70.91,
+                y: 70.91 - 41.05,
                 width: 19.6,
                 height: 4,
                 recipient: goldfishtalentsDetails.email,
