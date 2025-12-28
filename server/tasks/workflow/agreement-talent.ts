@@ -160,14 +160,14 @@ async function createDocument({
     email: string
     dob: string
     profession: string
-    pan: string
-    gstin: string
-    bankAccountName: string
-    bankAccountNumber: number
-    bankIfsc: string
-    bankName: string
-    bankBranch: string
-    upi: string
+    pan?: string
+    gstin?: string
+    bankAccountName?: string
+    bankAccountNumber?: number
+    bankIfsc?: string
+    bankName?: string
+    bankBranch?: string
+    upi?: string
   }
 }) {
   const mdContent = `
@@ -176,6 +176,7 @@ async function createDocument({
 **Between:**
 
 **Gold Fish Talents LLP** (LLPIN: ACS-4084)
+
 Registered Office: C/O Samita Nandy, 17 No N S Road, Harinavi Beltola, P.O.- Harinavi, P.S.-
 Sonarpur, Pincode: 700148, Ward No. 23, District: South 24 Parganas, India
 Email: [contact@goldfishtalents.com](mailto:contact@goldfishtalents.com) Phone: +919433128726
@@ -222,7 +223,7 @@ signature) are incorporated into and form part of this Agreement, and you confir
 a reasonable opportunity to read them.
 By signing below, I acknowledge and agree that:
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 | For Gold Fish Talents   | For Talent              |
 | ------------------------| ----------------------- |
@@ -366,6 +367,7 @@ export async function sendDocument({
   const config = useRuntimeConfig()
   const { documensoApi, documensoApiKey } = config.private
 
+  // 1. Create the document
   const {
     uploadUrl,
     documentId,
@@ -395,6 +397,7 @@ export async function sendDocument({
     },
   })
 
+  // 2. Upload the pdf
   await $fetch(uploadUrl, {
     method: 'PUT',
     headers: {
@@ -490,7 +493,7 @@ export default defineTask({
             pan: notionTextStringify(properties.PAN.rich_text),
             gstin: notionTextStringify(properties.GSTIN.rich_text),
             bankAccountName: notionTextStringify(properties['Bank Account Name'].rich_text),
-            bankAccountNumber: properties['Bank Account Number'].number as number,
+            bankAccountNumber: (properties['Bank Account Number'].number as number) ?? '',
             bankIfsc: notionTextStringify(properties['Bank IFSC code'].rich_text),
             bankName: notionTextStringify(properties['Bank Name'].rich_text),
             bankBranch: notionTextStringify(properties['Bank Branch'].rich_text),
@@ -523,47 +526,46 @@ export default defineTask({
             ],
             pdfBuffer: pdf.fileBuffer,
             fields: [
-              { type: 'DATE', page: 1, x: 22.4, y: 75, width: 21.3, height: 3, recipient: goldfishtalentsDetails.email },
-              { type: 'SIGNATURE', page: 1, x: 18.7, y: 91.3, width: 21.3, height: 5.3, recipient: talentDetails.email },
-              { type: 'SIGNATURE', page: 2, x: 18.7, y: 91.3, width: 21.3, height: 5.3, recipient: talentDetails.email },
-              { type: 'SIGNATURE', page: 3, x: 18.7, y: 91.3, width: 21.3, height: 5.3, recipient: talentDetails.email },
-              { type: 'SIGNATURE', page: 4, x: 18.7, y: 91.3, width: 21.3, height: 5.3, recipient: talentDetails.email },
-              { type: 'SIGNATURE', page: 5, x: 18.7, y: 91.3, width: 21.3, height: 5.3, recipient: talentDetails.email },
-              { type: 'SIGNATURE', page: 6, x: 18.7, y: 91.3, width: 21.3, height: 5.3, recipient: talentDetails.email },
+              { type: 'DATE', page: 1, x: 22.4, y: 74.3, width: 19.6, height: 3, recipient: goldfishtalentsDetails.email },
+              { type: 'SIGNATURE', page: 1, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
+              { type: 'SIGNATURE', page: 2, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
+              { type: 'SIGNATURE', page: 3, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
+              { type: 'SIGNATURE', page: 4, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
+              { type: 'SIGNATURE', page: 5, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
+              { type: 'SIGNATURE', page: 6, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
               {
                 type: 'CHECKBOX',
                 page: 7,
-                x: 8.55,
-                y: 19.69,
-                width: 90,
-                height: 2.93 * 6 + 2,
+                x: 5.5,
+                y: 20,
+                width: 180,
+                height: 20,
                 recipient: talentDetails.email,
                 fieldMeta: {
                   required: true,
                   type: 'checkbox',
                   values: [
                     { id: 1, checked: false, value: 'I have read and understood this Agreement and the Full Terms & Privacy Policy at the URLs above.' },
-                    { id: 2, checked: false, value: 'I will receive 100% of my Talent Rate (net of TDS and other taxes); GFT does not deduct commission from me.' },
-                    { id: 3, checked: false, value: 'I agree to the 12-month non-circumvention period and ₹5,000+ penalty for breach.' },
-                    { id: 4, checked: false, value: 'I agree to keep client and GFT information confidential for 2 years.' },
-                    { id: 5, checked: false, value: 'I consent to GFT processing my personal data per the Privacy Policy.' },
-                    { id: 6, checked: false, value: 'I am an independent contractor, not an employee; responsible for own taxes.' },
-                    { id: 7, checked: false, value: 'I indemnify GFT from claims arising from my performance failures or misconduct.' },
-                    { id: 8, checked: false, value: 'All information I provided is accurate and complete.' },
+                    { id: 2, checked: false, value: 'I agree to the 12-month non-circumvention period and ₹5,000+ penalty for breach.' },
+                    { id: 3, checked: false, value: 'I agree to keep client and GFT information confidential for 2 years.' },
+                    { id: 4, checked: false, value: 'I consent to GFT processing my personal data per the Privacy Policy.' },
+                    { id: 5, checked: false, value: 'I am an independent contractor, not an employee; responsible for own taxes.' },
+                    { id: 6, checked: false, value: 'I indemnify GFT from claims arising from my performance failures or misconduct.' },
+                    { id: 7, checked: false, value: 'All information I provided is accurate and complete.' },
                   ],
                   validationRule: 'Exactly',
-                  validationNumber: 8,
+                  validationNumber: 7,
                 },
               },
-              { type: 'SIGNATURE', page: 7, x: 61, y: 22.6 + 23.9, width: 21.3, height: 4, recipient: talentDetails.email },
-              { type: 'NAME', page: 7, x: 61, y: 28.47 + 23.9, width: 21.3, height: 4, recipient: talentDetails.email },
-              { type: 'DATE', page: 7, x: 61, y: 34.33 + 23.9, width: 21.3, height: 4, recipient: talentDetails.email },
+              { type: 'SIGNATURE', page: 7, x: 61, y: 54.77, width: 19.6, height: 4, recipient: talentDetails.email },
+              { type: 'NAME', page: 7, x: 61, y: 60.15, width: 19.6, height: 4, recipient: talentDetails.email },
+              { type: 'DATE', page: 7, x: 61, y: 65.53, width: 19.6, height: 4, recipient: talentDetails.email },
               {
                 type: 'TEXT',
                 page: 7,
                 x: 61,
-                y: 40.2 + 23.9,
-                width: 21.3,
+                y: 70.91,
+                width: 19.6,
                 height: 4,
                 recipient: talentDetails.email,
                 fieldMeta: {
@@ -575,15 +577,15 @@ export default defineTask({
                   textAlign: 'left',
                 },
               },
-              { type: 'SIGNATURE', page: 7, x: 21, y: 22.6 + 23.9, width: 21.3, height: 4, recipient: goldfishtalentsDetails.email },
-              { type: 'NAME', page: 7, x: 21, y: 28.47 + 23.9, width: 21.3, height: 4, recipient: goldfishtalentsDetails.email },
-              { type: 'DATE', page: 7, x: 21, y: 34.33 + 23.9, width: 21.3, height: 4, recipient: goldfishtalentsDetails.email },
+              { type: 'SIGNATURE', page: 7, x: 30, y: 54.77, width: 19.6, height: 4, recipient: goldfishtalentsDetails.email },
+              { type: 'NAME', page: 7, x: 30, y: 60.15, width: 19.6, height: 4, recipient: goldfishtalentsDetails.email },
+              { type: 'DATE', page: 7, x: 30, y: 65.53, width: 19.6, height: 4, recipient: goldfishtalentsDetails.email },
               {
                 type: 'TEXT',
                 page: 7,
-                x: 21,
-                y: 40.2 + 23.9,
-                width: 21.3,
+                x: 30,
+                y: 70.91,
+                width: 19.6,
                 height: 4,
                 recipient: goldfishtalentsDetails.email,
                 fieldMeta: {
@@ -599,28 +601,26 @@ export default defineTask({
             meta: {
               subject: 'Talent Onboarding Agreement',
               message: `Hi ,
+              Welcome to Gold Fish Talents! Attached is your Talent Agreement. 
+              Please read the following carefully before signing.
 
-Welcome to Gold Fish Talents! Attached is your Talent Agreement.
+                - The attached Agreement
+                - Full Terms & Conditions: https://goldfishtalents.com/talent/terms
+                - Privacy Policy: https://goldfishtalents.com/privacy/policy
 
-Please read the following carefully before signing.
+              Key terms to note:
 
-- The attached Agreement
-- Full Terms & Conditions: https://goldfishtalents.com/talent/terms
-- Privacy Policy: https://goldfishtalents.com/privacy/policy
+                - You receive 100% of your agreed rate (we don't deduct commission)
+                - 12-month non-circumvention with ₹5K-25% penalty for breach
+                - 2-year confidentiality obligation
+                - Independent contractor status (you're responsible for your own taxes)
 
-Key terms to note:
+              If you have questions, reply to this email. 
 
-- You receive 100% of your agreed rate (we don't deduct commission)
-- 12-month non-circumvention with ₹5K-25% penalty for breach
-- 2-year confidentiality obligation
-- Independent contractor status (you're responsible for your own taxes)
+              Once you've reviewed everything, please sign and return.
 
-If you have questions, reply to this email. 
-
-Once you've reviewed everything, please sign and return.
-
-Regards,
-Gold Fish Talents LLP`,
+              Regards,
+              Gold Fish Talents LLP`,
               timezone: 'Asia/Kolkata',
               dateFormat: 'MMMM dd, yyyy hh:mm a',
               signingOrder: 'SEQUENTIAL',
