@@ -534,6 +534,7 @@ export default defineTask({
               { type: 'SIGNATURE', page: 4, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
               { type: 'SIGNATURE', page: 5, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
               { type: 'SIGNATURE', page: 6, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
+              { type: 'SIGNATURE', page: 7, x: 20.7, y: 91.3, width: 19.6, height: 5.3, recipient: talentDetails.email },
               {
                 type: 'CHECKBOX',
                 page: 7,
