@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.7
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.6...v0.4.7)
+
+### 🩹 Fixes
+
+- Add additional signature field to talent agreement document ([b3ddb27](https://github.com/Algostract/gold-fish-talents/commit/b3ddb27))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.6
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.5...v0.4.6)
