@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.5
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.4...v0.4.5)
+
+### 🩹 Fixes
+
+- Update Docker image reference and package dependencies ([5a79904](https://github.com/Algostract/gold-fish-talents/commit/5a79904))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.4
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.3...v0.4.4)
