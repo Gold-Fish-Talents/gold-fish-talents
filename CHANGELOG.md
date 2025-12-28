@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.6
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.5...v0.4.6)
+
+### 🩹 Fixes
+
+- Improve formatting and adjust layout for talent agreement document ([04b16fe](https://github.com/Algostract/gold-fish-talents/commit/04b16fe))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.5
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.4...v0.4.5)
