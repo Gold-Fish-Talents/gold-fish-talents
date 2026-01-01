@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.8
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.7...v0.4.8)
+
+### 🩹 Fixes
+
+- Update bank account number handling in agreement talent task ([bc4b3a9](https://github.com/Algostract/gold-fish-talents/commit/bc4b3a9))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.7
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.6...v0.4.7)
