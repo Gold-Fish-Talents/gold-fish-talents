@@ -494,7 +494,7 @@ export default defineTask({
             pan: notionTextStringify(properties.PAN.rich_text),
             gstin: notionTextStringify(properties.GSTIN.rich_text),
             bankAccountName: notionTextStringify(properties['Bank Account Name'].rich_text),
-            bankAccountNumber: (properties['Bank Account Number'].number as number) ?? '',
+            bankAccountNumber: notionTextStringify(properties['Bank Account Number'].rich_text),
             bankIfsc: notionTextStringify(properties['Bank IFSC code'].rich_text),
             bankName: notionTextStringify(properties['Bank Name'].rich_text),
             bankBranch: notionTextStringify(properties['Bank Branch'].rich_text),

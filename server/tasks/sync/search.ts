@@ -8,22 +8,21 @@ async function syncCoverPhoto() {
   const assets = await notionQueryDb<NotionAsset>(notion, notionDbId.asset)
 
   for (const model of models) {
-    const coverPhoto = assets.filter(
-      ({ properties }) =>
-        properties.Type?.select?.name === 'Photo' &&
-        properties.Status.status.name === 'Release' &&
-        properties.Index.number === 1 &&
-        model.id &&
-        properties.Model?.relation?.some((r) => r.id === model.id)
-    )
+    const coverPhoto =
+      assets
+        .filter(
+          ({ properties }) => properties.Type?.select?.name === 'Photo' && properties.Status?.status?.name === 'Release' && model?.id && properties.Model?.relation?.some((r) => r.id === model.id)
+        )
+        .slice() // avoid mutating the filtered array when sorting
+        .sort((a, b) => (a.properties.Index?.number ?? Infinity) - (b.properties.Index?.number ?? Infinity))[0] ?? null
 
-    if (!coverPhoto.length) continue
+    if (!coverPhoto) continue
 
     console.log('🍃 Updating', { model: notionTextStringify(model.properties.Name.title) })
 
     await notion.pages.update({
       page_id: model.id,
-      cover: { type: 'external', external: { url: coverPhoto[0].cover?.type === 'external' ? coverPhoto[0].cover.external.url : '' } },
+      cover: { type: 'external', external: { url: coverPhoto.cover?.type === 'external' ? coverPhoto.cover.external.url : '' } },
     })
   }
 }

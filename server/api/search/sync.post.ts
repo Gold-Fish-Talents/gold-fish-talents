@@ -20,8 +20,6 @@ export async function syncSearchDb() {
 
       if (!(properties.DOB.date?.start && cover?.type === 'external')) return null
 
-      console.log({ cover: cover.external.url })
-
       return {
         id: properties.Slug.formula.string,
         gender: properties.Gender.select.name as Gender,
@@ -35,7 +33,7 @@ export async function syncSearchDb() {
         'photo.aspectRatio': 16 / 9,
         rating: 0,
         reviewCount: 0,
-        coordinate: [properties.Longitude?.number, properties.Latitude?.number],
+        coordinate: [properties.Longitude?.number ?? 0, properties.Latitude?.number ?? 0],
         isFeatured: properties.Featured.checkbox,
       }
     })

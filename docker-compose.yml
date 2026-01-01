@@ -30,8 +30,6 @@ services:
     image: ghcr.io/browserless/chromium:latest
     environment:
       - CORS=true
-    networks:
-      - internal
     deploy:
       replicas: 1
       restart_policy:
