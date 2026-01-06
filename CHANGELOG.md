@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.9
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.8...v0.4.9)
+
+### 🩹 Fixes
+
+- Update media URL paths in various components ([745400a](https://github.com/Algostract/gold-fish-talents/commit/745400a))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.8
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.7...v0.4.8)
