@@ -28,7 +28,7 @@ const urls: {
 const title = `${data.value?.name}`
 const shareAsset = ref<ShareAsset>({
   name: title,
-  imageUrl: `${cdnUrl}/${data.value?.photo.image}/-/format/jpeg/-/scale_crop/720x960/50p,0p/`,
+  imageUrl: `${cdnUrl}/media/${data.value?.photo.image}/-/format/jpeg/-/scale_crop/720x960/50p,0p/`,
   url: `${siteUrl}/talents/models/${data.value?.id}`,
 })
 

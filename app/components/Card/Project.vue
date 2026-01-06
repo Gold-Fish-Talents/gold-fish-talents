@@ -20,7 +20,7 @@ async function downloadMedia(url: string | Source[], filename: string, type: 'ph
   let finalUrl = ''
 
   if (type === 'photo') {
-    finalUrl = `${cdnUrl}/${url}/`
+    finalUrl = `${cdnUrl}/media/${url}/`
   } else {
     if (Array.isArray(url)) {
       // find 1440p + AVC format

@@ -64,10 +64,6 @@ async function loadModels() {
   pageParams.value.page++
   await refresh()
 
-  console.log({
-    totalResult: totalResult.models,
-  })
-
   totalResult.models.push(...result.value.data)
   totalResult.count = result.value.count
   totalResult.page = result.value.page

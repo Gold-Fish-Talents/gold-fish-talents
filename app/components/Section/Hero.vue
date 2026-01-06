@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <section class="overlay isloate relative -left-2 isolate flex h-screen w-screen items-stretch overflow-hidden md:-left-4">
     <CosmicBackground />
@@ -15,7 +13,7 @@
         Discover talents that shine beyond the constellations
       </p>
       <!-- Title -->
-      <h1 class="col-span-full row-start-4 mx-auto text-balance text-3xl font-bold text-white sm:text-4xl md:row-start-2 md:whitespace-nowrap md:text-6xl lg:text-7xl">GOLD FISH TALENTS</h1>
+      <h1 class="col-span-full row-start-4 mx-auto text-balance text-4xl font-bold text-white sm:text-4xl md:row-start-2 md:whitespace-nowrap md:text-6xl lg:text-7xl">GOLD FISH TALENTS</h1>
     </div>
   </section>
 </template>

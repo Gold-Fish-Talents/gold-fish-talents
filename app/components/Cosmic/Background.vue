@@ -57,7 +57,6 @@ const nebulaUniforms = {
 }
 
 // Star shader with twinkling effect
-// Star shader with twinkling effect
 const starVertexShader = `
   attribute float size;
   attribute float twinkleSpeed;
@@ -193,22 +192,6 @@ const atmosphereVertexShader = `
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   }
 `
-
-const atmosphereFragmentShader = `
-  varying vec3 vNormal;
-  varying vec3 vPosition;
-  
-  void main() {
-    // Calculate intensity based on viewing angle (fresnel effect)
-    float intensity = pow(0.6 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.0);
-    
-    // Atmospheric blue color
-    vec3 atmosphereColor = vec3(0.3, 0.6, 1.0);
-    
-    // Apply intensity and color
-    gl_FragColor = vec4(atmosphereColor, 1.0) * intensity;
-  }
-`
 </script>
 
 <template>
@@ -217,23 +200,7 @@ const atmosphereFragmentShader = `
       <!-- Camera -->
       <TresPerspectiveCamera :args="[45, 1, 0.1, 1000]" :position="[0, 0, 10]" />
       <!-- Light -->
-      <!-- 1. Subtle ambient for base illumination -->
-      <!-- <TresAmbientLight :intensity="0.05" color="#0a1628" /> -->
-      <!-- 2. Main Sun light from left (strong directional) -->
       <TresDirectionalLight :position="[-15, 3, 8]" :intensity="1.5" color="0x030719" />
-      <!-- 3. Hemisphere light for atmospheric scattering -->
-      <!-- <TresHemisphereLight :sky-color="0x87ceeb" :ground-color="0x0a1628" :intensity="0.3" /> -->
-      <!-- 4. Rim light from behind left for atmosphere glow -->
-      <!-- <TresPointLight :position="[-8, 2, -3]" :intensity="2" :distance="25" color="#4a9eff" /> -->
-      <!-- 5. Subtle fill light on dark side (very weak) -->
-      <!-- <TresPointLight :position="[8, 0, 5]" :intensity="0.15" :distance="15" color="#1e3a5f" /> -->
-      <!-- 6. Top rim light for edge definition -->
-      <!-- <TresPointLight :position="[-5, 8, 2]" :intensity="1.5" :distance="20" color="#6ba3d6" /> -->
-      <!-- Keep your existing nebula point lights -->
-      <!-- <TresPointLight :position="[220, 260, -80]" :intensity="40" :distance="650" :decay="1.7" color="#ff8c19" /> -->
-      <!-- <TresPointLight :position="[-140, 260, -40]" :intensity="38" :distance="600" :decay="1.7" color="#f472b6" /> -->
-      <!-- <TresPointLight :position="[40, 260, -260]" :intensity="42" :distance="700" :decay="1.7" color="#38bdf8" /> -->
-      <!--  Nebula (Background - furthest) -->
       <TresGroup :position="[0, 0, -50]">
         <TresMesh :rotation="[1.2, -0.2, 0.0]" :scale="[1.2, 1.2, 1]">
           <TresPlaneGeometry :args="[120, 120]" />
@@ -260,16 +227,15 @@ const atmosphereFragmentShader = `
             :vertex-colors="false" />
         </TresPoints>
       </TresGroup>
-      <!-- Atmosphere Glow -->
-      <TresMesh :position="[0, 0, 0]" :rotation="[0, -0.5, 0.3]">
-        <TresSphereGeometry :args="[2.65, 64, 64]" />
-        <TresShaderMaterial
-          :vertex-shader="atmosphereVertexShader"
-          :fragment-shader="atmosphereFragmentShader"
-          :transparent="true"
-          :blending="AdditiveBlending"
-          :depth-write="false"
-          :side="BackSide" />
+      <!-- Central glowing sun/orb -->
+      <TresMesh :position="[0, 0, 0]">
+        <TresSphereGeometry :args="[2.5, 64, 64]" />
+        <TresMeshBasicMaterial color="#FFD88A" />
+      </TresMesh>
+      <!-- Sun glow effect -->
+      <TresMesh :position="[0, 0, 0]">
+        <TresSphereGeometry :args="[2.8, 64, 64]" />
+        <TresShaderMaterial :vertex-shader="atmosphereVertexShader" :fragment-shader="sunGlowFragmentShader" :transparent="true" :blending="AdditiveBlending" :depth-write="false" :side="BackSide" />
       </TresMesh>
     </TresCanvas>
   </div>
