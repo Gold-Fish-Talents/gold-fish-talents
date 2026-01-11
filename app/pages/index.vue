@@ -65,5 +65,3 @@ const { data: featuredTalents } = await useAPI('/api/v1/talents/models', {
     <SectionCTA class="mt-16 md:mt-24" />
   </div>
 </template>
-
-<style></style>

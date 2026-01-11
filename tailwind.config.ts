@@ -19,8 +19,8 @@ export default <Partial<Config>>{
       '7xl': ['4.5rem', '5.375rem'],
     },
     fontFamily: {
-      main: ['Plus Jakarta Sans', 'sans-serif'],
-      sub: ['Plus Jakarta Sans', 'sans-serif'],
+      main: ['Sora', 'sans-serif'],
+      sub: ['Sora', 'sans-serif'],
     },
     fontWeight: {
       light: '300',

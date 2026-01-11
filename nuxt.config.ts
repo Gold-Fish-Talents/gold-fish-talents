@@ -84,7 +84,7 @@ export default defineNuxtConfig({
     },
     scheduledTasks: {
       '*/3 * * * *': [],
-      '*/5 * * * *': ['sync:search', 'workflow:agreement-talent'],
+      '*/5 * * * *': ['workflow:agreement-talent'],
     },
   },
   routeRules: {
