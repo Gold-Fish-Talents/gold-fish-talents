@@ -33,5 +33,7 @@ useSchemaOrg([
 <template>
   <div class="relative min-h-screen">
     <SectionHero />
+    <SectionBrands />
+    <SectionCaption />
   </div>
 </template>
