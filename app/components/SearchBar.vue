@@ -11,7 +11,7 @@ const onSearch = useDebounceFn(() => {
   model.value = {
     query: query.value.trim(),
     queryBy: 'name',
-    filterBy: '', // e.g. "isFeatured:=true"
+    filterBy: '',
     sortBy: 'rating:desc',
   }
 }, 300)

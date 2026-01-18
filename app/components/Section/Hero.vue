@@ -1,16 +1,15 @@
 <template>
-  <section class="overlay isloate relative -left-2 isolate flex h-screen w-screen items-stretch overflow-hidden md:-left-4">
-    <CosmicBackground />
-    <div
-      class="relative mx-4 grid size-full grid-cols-1 grid-rows-[auto_min-content_min-content_min-content] items-center justify-items-center gap-8 px-4 pb-10 text-center md:mx-8 md:grid-cols-[minmax(0,_1.4fr)_minmax(0,_1fr)] md:grid-rows-[auto_min-content] md:items-end md:justify-between md:pb-16 md:text-left">
-      <h1 class="col-span-full row-start-4 mx-auto text-balance text-2xl font-bold text-white sm:text-4xl md:row-start-2 md:whitespace-nowrap md:text-6xl lg:text-[9rem]">GOLD FISH TALENTS</h1>
-      <p class="row-start-3 w-full max-w-56 justify-self-auto text-xs uppercase text-white/80 md:col-start-2 md:row-start-1 md:mx-0 md:max-w-96 md:justify-self-end md:text-right">
-        Discover talents that shine beyond the constellations
-      </p>
-      <p class="row-start-2 w-full max-w-96 space-y-4 justify-self-auto text-xs text-white/80 md:col-start-1 md:row-start-1 md:mx-0 md:justify-self-start">
+  <section class="overlay relative left-1/2 isolate flex h-screen w-screen -translate-x-1/2 items-stretch overflow-hidden">
+    <SpaceBackground />
+    <div class="relative z-10 mx-auto grid size-full max-w-7xl grid-cols-2 grid-rows-5 gap-x-4 gap-y-2 px-4 md:grid-cols-4 md:gap-6 lg:gap-x-8 lg:gap-y-4">
+      <p class="col-start-1 row-start-4 self-end text-left text-sm md:text-base">
         Your project is a universe.<br />
         We help you fill it with the right stars, planets, and cosmic energy it needs to come alive.
       </p>
+      <p class="col-start-2 row-start-4 self-end text-right text-sm md:col-start-4 md:text-lg">Discover talents that shine beyond the constellations</p>
+      <h1 class="s col-span-full col-start-1 row-start-5 self-start whitespace-nowrap pt-8 text-center text-2xl font-bold leading-none text-white md:text-left md:text-7xl lg:text-[7.5rem]">
+        GOLD FISH TALENTS
+      </h1>
     </div>
   </section>
 </template>

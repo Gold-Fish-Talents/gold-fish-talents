@@ -5,7 +5,6 @@ const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
 }
 
-// Close mobile menu on route change
 const route = useRoute()
 watch(
   () => route.path,
@@ -37,17 +36,14 @@ watch(
           <NuxtLink to="/contact" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Contact </NuxtLink>
         </li>
       </ul>
-      <!-- Desktop CTA Button -->
       <NuxtLink to="/jobs/post" class="hidden rounded-full bg-white/15 px-11 py-4 text-base font-semi-bold text-white shadow-md backdrop-blur-md transition-colors hover:bg-white/25 md:block">
         Post a job
       </NuxtLink>
-      <!-- Mobile Menu Toggle -->
       <button class="flex size-10 items-center justify-center transition-colors md:hidden" aria-label="Toggle menu" @click="toggleMobileMenu">
         <NuxtIcon v-if="!isMobileMenuOpen" name="local:hamburger" class="size-7 text-white" />
         <NuxtIcon v-else name="local:cross" class="size-7 text-white" />
       </button>
     </nav>
-    <!-- Mobile Menu -->
     <Transition
       enter-active-class="transition duration-200 ease-out"
       enter-from-class="opacity-0 scale-95"

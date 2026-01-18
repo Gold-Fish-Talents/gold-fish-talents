@@ -1,4 +1,3 @@
-<!-- components/AppFooter.vue -->
 <script setup lang="ts">
 const props = defineProps<{
   class?: string
@@ -54,28 +53,27 @@ const columns = [
 </script>
 
 <template>
-  <footer class="relative w-screen border-t border-white/10 bg-[#020617] text-white" :class="props.class">
-    <div class="mx-auto max-w-6xl px-4 py-12">
-      <h2 class="font-semibold text-center text-xl tracking-[0.2em] text-white/80">DISCOVER, HIRE, CREATE.</h2>
-      <p class="mt-2 text-center text-xs text-light-600">Start hiring today.</p>
+  <footer class="sm:py-18 relative min-h-screen w-screen overflow-hidden px-6 py-14 text-white lg:py-24" :class="props.class">
+    <div aria-hidden="true" class="absolute inset-0 bg-[url('/images/moon-landing.png')] bg-contain bg-bottom bg-no-repeat md:bg-cover md:bg-[center_60%]" />
+    <div class="relative mx-auto mb-16 w-full max-w-[90rem]">
+      <h2 class="font-semibold text-center text-3xl uppercase tracking-[0.12em] text-white/85 sm:text-5xl sm:tracking-[0.16em] lg:text-7xl lg:tracking-[0.2em]">Discover, Hire, Create.</h2>
 
-      <div class="mt-10 grid gap-8 text-sm text-light-600 md:grid-cols-5">
-        <div v-for="col in columns" :key="col.title" class="space-y-3">
+      <p class="mt-4 text-center text-sm uppercase sm:mt-6 sm:text-base lg:text-2xl">Start hiring today</p>
+
+      <div class="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 text-sm text-white/60 sm:grid-cols-3 lg:mt-28 lg:grid-cols-5">
+        <div v-for="{ title, links } in columns" :key="title" class="space-y-5">
           <p class="font-semibold text-xs uppercase text-white/80">
-            {{ col.title }}
+            {{ title }}
           </p>
-          <ul class="space-y-2">
-            <li v-for="{ title, link } in col.links" :key="link">
-              <NuxtLink :to="link" class="hover:text-primary-400">
-                {{ title }}
+
+          <ul class="space-y-4">
+            <li v-for="{ title: linkTitle, link } in links" :key="link">
+              <NuxtLink :to="link" class="whitespace-nowrap transition-colors hover:text-primary-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/60">
+                {{ linkTitle }}
               </NuxtLink>
             </li>
           </ul>
         </div>
-      </div>
-      <div class="mt-10 flex items-center justify-between text-xs text-light-600">
-        <p>© {{ new Date().getFullYear() }} Gold Fish Talents. All rights reserved.</p>
-        <p>Made among the stars.</p>
       </div>
     </div>
   </footer>

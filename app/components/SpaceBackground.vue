@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AdditiveBlending, DoubleSide, Color, BufferGeometry, Float32BufferAttribute, BackSide } from 'three'
+import { AdditiveBlending, DoubleSide, Color, BufferGeometry, Float32BufferAttribute } from 'three'
 
 const vertexShader = `
   varying vec2 vUv;
@@ -180,18 +180,6 @@ onMounted(() => {
   }
   frameId = requestAnimationFrame(animate)
 })
-
-// Atmosphere Glow Shaders
-const atmosphereVertexShader = `
-  varying vec3 vNormal;
-  varying vec3 vPosition;
-  
-  void main() {
-    vNormal = normalize(normalMatrix * normal);
-    vPosition = position;
-    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-  }
-`
 </script>
 
 <template>
@@ -227,16 +215,6 @@ const atmosphereVertexShader = `
             :vertex-colors="false" />
         </TresPoints>
       </TresGroup>
-      <!-- Central glowing sun/orb -->
-      <TresMesh :position="[0, 0, 0]">
-        <TresSphereGeometry :args="[2.5, 64, 64]" />
-        <TresMeshBasicMaterial color="#FFD88A" />
-      </TresMesh>
-      <!-- Sun glow effect -->
-      <TresMesh :position="[0, 0, 0]">
-        <TresSphereGeometry :args="[2.8, 64, 64]" />
-        <TresShaderMaterial :vertex-shader="atmosphereVertexShader" :fragment-shader="sunGlowFragmentShader" :transparent="true" :blending="AdditiveBlending" :depth-write="false" :side="BackSide" />
-      </TresMesh>
     </TresCanvas>
   </div>
 </template>
