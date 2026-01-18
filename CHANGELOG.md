@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.4.10
+
+[compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.9...v0.4.10)
+
+### 🚀 Enhancements
+
+- Add Brands and Caption sections to the homepage ([ccf10df](https://github.com/Algostract/gold-fish-talents/commit/ccf10df))
+
+### 🏡 Chore
+
+- Update nuxt configuration and dependencies ([523a9e9](https://github.com/Algostract/gold-fish-talents/commit/523a9e9))
+
+### 🎨 Styles
+
+- Hero and footer ([ab484c9](https://github.com/Algostract/gold-fish-talents/commit/ab484c9))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.9
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.8...v0.4.9)
