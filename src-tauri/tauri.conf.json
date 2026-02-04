@@ -5,7 +5,7 @@
   "identifier": "com.goldfishtalents.app",
   "build": {
     "frontendDist": "../dist",
-    "devUrl": "http://localhost:3000",
+    "devUrl": "http://localhost:3003",
     "beforeDevCommand": "dotenvx run -f .env.native -- nuxt dev",
     "beforeBuildCommand": "dotenvx run -f .env.native -- nuxt generate"
   },
