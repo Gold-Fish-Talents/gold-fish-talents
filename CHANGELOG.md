@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.11
+
+[compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.10...v0.4.11)
+
+### 🏡 Chore
+
+- Update project metadata and remove unused Android resources ([4b3dc3c](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/4b3dc3c))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.10
 
 [compare changes](https://github.com/Algostract/gold-fish-talents/compare/v0.4.9...v0.4.10)
