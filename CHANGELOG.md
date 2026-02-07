@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.12
+
+[compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.11...v0.4.12)
+
+### 🚀 Enhancements
+
+- Add pages talent creation pages ([aab9fe2](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/aab9fe2))
+
+### ❤️ Contributors
+
+- SATADRU1 <satadrumondal1331@gmail.com>
+
 ## v0.4.11
 
 [compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.10...v0.4.11)
