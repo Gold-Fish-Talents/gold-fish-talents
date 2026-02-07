@@ -24,6 +24,9 @@ watch(
           <NuxtLink to="/services" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Services </NuxtLink>
         </li>
         <li>
+          <NuxtLink to="/jobs/create/projects" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Projects </NuxtLink>
+        </li>
+        <li>
           <NuxtLink to="/talents/featured" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Featured Talents </NuxtLink>
         </li>
         <li>
@@ -36,9 +39,11 @@ watch(
           <NuxtLink to="/contact" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Contact </NuxtLink>
         </li>
       </ul>
-      <NuxtLink to="/jobs/post" class="hidden rounded-full bg-white/15 px-11 py-4 text-base font-semi-bold text-white shadow-md backdrop-blur-md transition-colors hover:bg-white/25 md:block">
-        Post a job
-      </NuxtLink>
+      <div class="hidden items-center gap-4 md:flex">
+        <NuxtLink to="/jobs/post-job" class="rounded-full bg-white/15 px-11 py-4 text-base font-semi-bold text-white shadow-md backdrop-blur-md transition-colors hover:bg-white/25">
+          Post a job
+        </NuxtLink>
+      </div>
       <button class="flex size-10 items-center justify-center transition-colors md:hidden" aria-label="Toggle menu" @click="toggleMobileMenu">
         <NuxtIcon v-if="!isMobileMenuOpen" name="local:hamburger" class="size-7 text-white" />
         <NuxtIcon v-else name="local:cross" class="size-7 text-white" />
@@ -57,6 +62,9 @@ watch(
             <NuxtLink to="/services" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Services </NuxtLink>
           </li>
           <li>
+            <NuxtLink to="/jobs/create/projects" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Projects </NuxtLink>
+          </li>
+          <li>
             <NuxtLink to="/talents/featured" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Featured Talents </NuxtLink>
           </li>
           <li>
@@ -68,8 +76,8 @@ watch(
           <li>
             <NuxtLink to="/contact" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Contact </NuxtLink>
           </li>
-          <li class="mt-2 px-2">
-            <NuxtLink to="/jobs/post" class="block rounded-full bg-white/15 px-5 py-3 text-center text-sm font-semi-bold text-white shadow-md backdrop-blur-md transition-colors hover:bg-white/25">
+          <li class="mt-2 flex flex-col gap-2 px-2">
+            <NuxtLink to="/jobs/post-job" class="block rounded-full bg-white/15 px-5 py-3 text-center text-sm font-semi-bold text-white shadow-md backdrop-blur-md transition-colors hover:bg-white/25">
               Post a job
             </NuxtLink>
           </li>

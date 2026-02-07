@@ -17,8 +17,8 @@ const columns = [
   {
     title: 'Talents',
     links: [
-      { title: 'Join as Talent', link: '/talent/join' },
-      { title: 'Talent Login', link: '/talent/login' },
+      { title: 'Join as Talent', link: '/jobs/post' },
+      { title: 'Talent Login', link: '/jobs/post' },
       { title: 'Payment Policy', link: '/policy/payments' },
     ],
   },

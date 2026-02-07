@@ -63,6 +63,16 @@ export default defineNuxtConfig({
     'nuxt-auth-utils',
     'nuxt-maplibre',
   ],
+  fonts: {
+    /**
+     * Nuxt Fonts proxies and caches remote providers (e.g. Google) under `/_fonts/*`.
+     * In offline / restricted-network dev environments this can introduce long
+     * request timeouts that feel like "slow navigation".
+     *
+     * Use only local fonts to avoid remote fetches.
+     */
+    provider: 'local',
+  },
   vite: {
     server: {
       allowedHosts: true,
@@ -82,10 +92,14 @@ export default defineNuxtConfig({
     experimental: {
       tasks: true,
     },
-    scheduledTasks: {
-      '*/3 * * * *': [],
-      '*/5 * * * *': ['workflow:agreement-talent'],
-    },
+    // Avoid running scheduled server-side tasks in development.
+    scheduledTasks:
+      process.env.NODE_ENV === 'production'
+        ? {
+            '*/3 * * * *': [],
+            '*/5 * * * *': ['workflow:agreement-talent'],
+          }
+        : {},
   },
   routeRules: {
     '/': { ssr: true },
@@ -95,6 +109,8 @@ export default defineNuxtConfig({
     '/api/**': { cors: true },
     '/client-terms': { redirect: { to: '/terms/client', statusCode: 301 } },
     '/talent-terms': { redirect: { to: '/terms/talent', statusCode: 301 } },
+    '/talent/join': { redirect: { to: '/jobs/post', statusCode: 302 } },
+    '/talent/login': { redirect: { to: '/jobs/post', statusCode: 302 } },
     '/privacy-policy': { redirect: { to: '/privacy', statusCode: 301 } },
     '/terms/**': { isr: 86400 },
     '/privacy': { isr: 86400 },
@@ -102,7 +118,7 @@ export default defineNuxtConfig({
     '/license': { isr: 86400 },
   },
   runtimeConfig: {
-    app: {
+    appInfo: {
       version: '',
       buildTime: '',
     },
@@ -166,7 +182,6 @@ export default defineNuxtConfig({
       modifiers: {
         format: 'auto',
         quality: 80,
-        progressive: 'yes',
       },
     },
   },

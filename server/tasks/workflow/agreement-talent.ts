@@ -454,6 +454,11 @@ export default defineTask({
   async run() {
     const config = useRuntimeConfig()
     const notionDbId = config.private.notionDbId as unknown as NotionDB
+    // In local/dev environments this config is often unset; don't crash the dev server.
+    if (!notionDbId?.model || !notionDbId?.termsTalent) {
+      console.warn('[workflow:agreement-talent] Skipped: missing Notion DB config (private.notionDbId).')
+      return { skipped: true }
+    }
 
     /* const today = new Date()
     const expiry = new Date(today)
