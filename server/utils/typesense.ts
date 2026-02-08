@@ -7,6 +7,7 @@ const typesenseClientSingleton = () => {
   })
 }
 
+// eslint-disable-next-line no-shadow-restricted-names
 declare const globalThis: {
   typesenseGlobal: ReturnType<typeof typesenseClientSingleton>
 } & typeof global
