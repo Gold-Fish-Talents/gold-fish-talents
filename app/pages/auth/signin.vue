@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { z } from 'zod'
+import type * as z from 'zod'
 
 definePageMeta({
   layout: false,

@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import * as z from 'zod'
 
 /* Schema */
 export const emailFormSchema = z.object({

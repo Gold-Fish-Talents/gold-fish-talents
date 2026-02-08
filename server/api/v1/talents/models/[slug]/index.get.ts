@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import * as z from 'zod'
 import { differenceInYears, parseISO } from 'date-fns'
 
 export default defineCachedEventHandler<Promise<DetailedModel>>(

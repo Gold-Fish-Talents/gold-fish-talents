@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { z } from 'zod'
+import type * as z from 'zod'
 
 const props = defineProps<{ data: z.infer<typeof modelFormSchema> }>()
 const emit = defineEmits<{
