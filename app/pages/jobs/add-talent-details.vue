@@ -32,9 +32,7 @@ function onAddAnotherTalent() {
 }
 
 function onAddShootDetails() {
-  // Handle adding shoot details
-  console.log('Adding shoot details:', form)
-  // Navigate to next step or submit
+  navigateTo('/jobs/shoot-details')
 }
 </script>
 
@@ -203,7 +201,7 @@ function onAddShootDetails() {
             type="button"
             class="rounded-xl bg-primary-500 px-8 py-4 text-base font-semi-bold text-black shadow-lg transition-all hover:bg-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-dark-500"
             @click="onAddShootDetails">
-            Add Shoot Details
+            Add Shoot Budget
           </button>
         </div>
       </form>

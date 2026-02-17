@@ -54,7 +54,7 @@ export default defineEventHandler(async (event) => {
     const body = await readBody<{ email: string; otp?: string; mock?: boolean }>(event)
     const authCodeStorage = useStorage<{ type: 'email' | 'phone'; code: string; expiresAt: number }>(`data:auth:code`)
     const isDev = process.env.NODE_ENV !== 'production'
-    const isMockLogin = isDev && (body.mock === true || !body.otp)
+    const isMockLogin = isDev && body.mock === true
 
     let isSuccess = false
     let navigateTo: string | undefined = undefined

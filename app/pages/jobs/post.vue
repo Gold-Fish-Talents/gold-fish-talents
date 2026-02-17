@@ -20,21 +20,61 @@ function hasFieldError(field: keyof EmailFormSchema) {
   return r$[field]?.$dirty && r$[field].$error
 }
 
-const { status, data, error } = useAPI('/auth/email', {
+interface EmailAuthResponse {
+  isSuccess: boolean
+  navigateTo?: string
+}
+
+const { status, data, error, execute } = useAPI<EmailAuthResponse>('/auth/email', {
   method: 'POST',
-  body: r$.$value,
+  body: () => r$.$value,
   immediate: false,
   watch: false,
 })
 
-const isOTPSent = computed(() => data.value?.isSuccess)
+const showOTP = ref(false)
+const isOTPSent = computed(() => showOTP.value || data.value?.isSuccess)
 const isMockMode = computed(() => import.meta.dev && !isOTPSent.value)
 
 async function onEmailSignIn() {
   const { valid } = await r$.$validate()
   if (!valid || status.value === 'pending') return
 
-  await navigateTo('/jobs/select')
+  console.log('[Job Post] Executing authentication...')
+  await execute()
+
+  console.log('[Job Post] API Response:', {
+    status: status.value,
+    data: data.value,
+    error: error.value,
+  })
+
+  // If OTP sent successfully AND we are not yet showing OTP field, show it
+  if (data.value?.isSuccess && !data.value?.navigateTo && !showOTP.value) {
+    showOTP.value = true
+    return
+  }
+
+  // If we are already showing OTP and it was successful, but no navigateTo, force fallback
+  if (showOTP.value && data.value?.isSuccess && !data.value?.navigateTo) {
+    console.log('[Job Post] OTP Verified but no navigateTo, forcing fallback')
+    await navigateTo('/jobs/select')
+    return
+  }
+
+  // Navigate to the URL returned by the API, or fallback to /jobs/select
+  if (data.value?.navigateTo) {
+    console.log('[Job Post] Navigating to:', data.value.navigateTo)
+    await navigateTo(data.value.navigateTo)
+  } else if (data.value?.isSuccess) {
+    console.log('[Job Post] Success but no navigateTo, using fallback: /jobs/select')
+    await navigateTo('/jobs/select')
+  } else if (error.value) {
+    console.error('[Job Post] Authentication error:', error.value)
+  } else {
+    console.warn('[Job Post] Unexpected state, forcing navigation to /jobs/select')
+    await navigateTo('/jobs/select')
+  }
 }
 </script>
 

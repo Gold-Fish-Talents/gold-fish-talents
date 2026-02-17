@@ -24,7 +24,7 @@ const form = reactive({
 })
 
 function goToProjects() {
-  navigateTo({ path: '/jobs/create/projects', query: { type: talentType.value } })
+  navigateTo({ path: '/jobs/create/profile', query: { type: talentType.value } })
 }
 </script>
 

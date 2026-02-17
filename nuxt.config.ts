@@ -118,7 +118,7 @@ export default defineNuxtConfig({
     '/license': { isr: 86400 },
   },
   runtimeConfig: {
-    appInfo: {
+    app: {
       version: '',
       buildTime: '',
     },

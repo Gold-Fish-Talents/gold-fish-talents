@@ -42,7 +42,7 @@ watch(
         </li>
       </ul>
       <div class="hidden items-center gap-4 md:flex">
-        <NuxtLink to="/jobs/post-job" class="rounded-full bg-white/15 px-11 py-4 text-base font-semi-bold text-white shadow-md backdrop-blur-md transition-colors hover:bg-white/25">
+        <NuxtLink to="/auth/client-login" class="rounded-full bg-white/15 px-11 py-4 text-base font-semi-bold text-white shadow-md backdrop-blur-md transition-colors hover:bg-white/25">
           Post a job
         </NuxtLink>
       </div>
@@ -79,7 +79,9 @@ watch(
             <NuxtLink to="/contact" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Contact </NuxtLink>
           </li>
           <li class="mt-2 flex flex-col gap-2 px-2">
-            <NuxtLink to="/jobs/post-job" class="block rounded-full bg-white/15 px-5 py-3 text-center text-sm font-semi-bold text-white shadow-md backdrop-blur-md transition-colors hover:bg-white/25">
+            <NuxtLink
+              to="/auth/client-login"
+              class="block rounded-full bg-white/15 px-5 py-3 text-center text-sm font-semi-bold text-white shadow-md backdrop-blur-md transition-colors hover:bg-white/25">
               Post a job
             </NuxtLink>
           </li>
