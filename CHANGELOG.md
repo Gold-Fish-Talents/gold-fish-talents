@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.4.13
+
+[compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.12...v0.4.13)
+
+### 💅 Refactors
+
+- Update zod import style across multiple files ([ca330a0](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/ca330a0))
+
+### 🏡 Chore
+
+- Update dependencies and remove Notion auth route ([c66039d](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/c66039d))
+- Update dependencies and add load testing script ([64de8b3](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/64de8b3))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi ([@shba007](https://github.com/shba007))
+
 ## v0.4.12
 
 [compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.11...v0.4.12)
