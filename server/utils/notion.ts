@@ -4,9 +4,9 @@ const notionClientSingleton = () => {
   return new Client({ auth: import.meta.env.NOTION_API_KEY })
 }
 
-declare const globalThis: {
-  notionGlobal: ReturnType<typeof notionClientSingleton>
-} & typeof global
+declare global {
+  var notionGlobal: ReturnType<typeof notionClientSingleton> | undefined
+}
 
 const notion = globalThis.notionGlobal ?? notionClientSingleton()
 

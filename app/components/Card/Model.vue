@@ -2,7 +2,7 @@
 import type { Model } from '~~/shared/types'
 
 interface ExtendedModel extends Model {
-  isFavorite: boolean
+  isFavorite?: boolean
 }
 
 const props = withDefaults(defineProps<ExtendedModel>(), {

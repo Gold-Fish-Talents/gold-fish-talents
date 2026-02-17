@@ -90,9 +90,9 @@ async function downloadMedia(url: string | Source[], filename: string, type: 'ph
         </div>
         <div v-else class="relative z-10 grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-6">
           <!-- url -->
-          <div v-for="{ id, image, description } in project.media.photo" :key="id" class="relative">
+          <div v-for="{ id, image: photoUrl, description } in project.media.photo" :key="id" class="relative">
             <NuxtImg
-              :src="image"
+              :src="photoUrl"
               :alt="description"
               :width="480"
               :height="Math.round(480 / (3 / 4))"
@@ -101,9 +101,9 @@ async function downloadMedia(url: string | Source[], filename: string, type: 'ph
               :placeholder="[120, Math.round(120 / (3 / 4)), 'lightest', 25]"
               class="w-full rounded-sm bg-light-600 object-cover dark:bg-dark-500" />
             <button
-              v-if="image"
+              v-if="photoUrl"
               class="absolute bottom-2 right-2 z-10 items-center gap-1 rounded-md bg-black/60 p-2 text-sm text-white backdrop-blur-sm transition hover:bg-black/80 focus:bg-primary-500/60 focus:text-black"
-              @click="downloadMedia(image, id, 'photo')">
+              @click="downloadMedia(photoUrl, id, 'photo')">
               <NuxtIcon name="local:download" class="text-[16px]" />
             </button>
           </div>

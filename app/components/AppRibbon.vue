@@ -7,6 +7,7 @@ defineProps<{ title: string }>()
 
 <template>
   <div class="flex scale-90 justify-center font-main text-xs text-black drop-shadow-md">
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <div class="relative top-[2px] scale-110 fill-primary-600" v-html="banner" />
     <strong class="relative mb-2 -translate-x-1 scale-90 overflow-hidden rounded-r-[4px] bg-primary-500 px-2 pb-[5px] pt-1">
       {{ title }}
