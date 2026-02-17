@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.4.14
+
+[compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.13...v0.4.14)
+
+### 🚀 Enhancements
+
+- Add pages job posting pages ([60e8ca2](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/60e8ca2))
+
+### 🩹 Fixes
+
+- Type error ([daed5eb](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/daed5eb))
+- Lint error ([94ea9c6](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/94ea9c6))
+- Type error updated ([5a46858](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/5a46858))
+
+### ❤️ Contributors
+
+- SATADRU1 <satadrumondal1331@gmail.com>
+
 ## v0.4.13
 
 [compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.12...v0.4.13)
