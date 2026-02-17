@@ -17,7 +17,9 @@ watch(
 <template>
   <header class="fixed left-0 right-0 top-0 z-50 mx-auto w-full px-4 pt-4">
     <nav class="relative mx-auto flex max-w-6xl items-center justify-between rounded-lg border border-white/10 bg-white/5 px-6 py-3 shadow-lg backdrop-blur-xl md:rounded-2xl">
-      <NuxtLink to="/" class="px-4 py-1.5 text-xl font-semi-bold text-white transition-colors md:text-2xl"> Logo </NuxtLink>
+      <NuxtLink to="/" class="size-fit" aria-label="home">
+        <NuxtIcon name="local:logo" filled class="text-[32px] md:text-[48px]" />
+      </NuxtLink>
       <!-- Desktop Navigation -->
       <ul class="hidden items-center gap-8 md:flex">
         <li>

@@ -57,15 +57,12 @@ const columns = [
     <div aria-hidden="true" class="absolute inset-0 bg-[url('/images/moon-landing.png')] bg-contain bg-bottom bg-no-repeat md:bg-cover md:bg-[center_60%]" />
     <div class="relative mx-auto mb-16 w-full max-w-[90rem]">
       <h2 class="font-semibold text-center text-3xl uppercase tracking-[0.12em] text-white/85 sm:text-5xl sm:tracking-[0.16em] lg:text-7xl lg:tracking-[0.2em]">Discover, Hire, Create.</h2>
-
       <p class="mt-4 text-center text-sm uppercase sm:mt-6 sm:text-base lg:text-2xl">Start hiring today</p>
-
       <div class="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 text-sm text-white/60 sm:grid-cols-3 lg:mt-28 lg:grid-cols-5">
         <div v-for="{ title, links } in columns" :key="title" class="space-y-5">
           <p class="font-semibold text-xs uppercase text-white/80">
             {{ title }}
           </p>
-
           <ul class="space-y-4">
             <li v-for="{ title: linkTitle, link } in links" :key="link">
               <NuxtLink :to="link" class="whitespace-nowrap transition-colors hover:text-primary-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-400/60">
@@ -73,6 +70,13 @@ const columns = [
               </NuxtLink>
             </li>
           </ul>
+        </div>
+        <div class="relative flex flex-col gap-2 text-sm">
+          <span>&copy; 2025-2026</span>
+          <NuxtLink to="https://modesthumanbrands.com" target="__blank" class="flex items-center gap-4">
+            <span>Powered by</span>
+            <NuxtIcon name="local:mhb" filled class="text-[32px]" />
+          </NuxtLink>
         </div>
       </div>
     </div>
