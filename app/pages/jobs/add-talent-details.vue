@@ -37,7 +37,7 @@ function onAddShootDetails() {
 </script>
 
 <template>
-  <main class="relative min-h-[calc(100vh-8rem)] w-full px-4 py-8 md:py-12">
+  <main class="relative min-h-[calc(100vh-8rem)] w-full px-4 pb-8 pt-28 md:pb-12 md:pt-32">
     <div class="pointer-events-none fixed inset-0 -z-10 bg-dark-400 bg-gradient-to-b from-dark-400 via-dark-500/20 to-dark-400" aria-hidden="true" />
 
     <div class="mx-auto w-full max-w-4xl">

@@ -268,7 +268,7 @@ function setFilter(f: ApplicationFilter) {
 </script>
 
 <template>
-  <main class="relative min-h-[calc(100vh-8rem)] w-full px-4 py-8 md:py-12">
+  <main class="relative min-h-[calc(100vh-8rem)] w-full px-4 pb-8 pt-28 md:pb-12 md:pt-32">
     <div class="pointer-events-none fixed inset-0 -z-10 bg-dark-400 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-dark-500/40 via-dark-400 to-dark-400" aria-hidden="true" />
 
     <div class="mx-auto w-full max-w-5xl">

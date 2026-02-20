@@ -26,6 +26,9 @@ watch(
           <NuxtLink to="/services" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Services </NuxtLink>
         </li>
         <li>
+          <NuxtLink to="/jobs" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Jobs </NuxtLink>
+        </li>
+        <li>
           <NuxtLink to="/jobs/create/projects" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Projects </NuxtLink>
         </li>
         <li>
@@ -62,6 +65,9 @@ watch(
         <ul class="flex flex-col gap-1 p-3">
           <li>
             <NuxtLink to="/services" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Services </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/jobs" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Jobs </NuxtLink>
           </li>
           <li>
             <NuxtLink to="/jobs/create/projects" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Projects </NuxtLink>
