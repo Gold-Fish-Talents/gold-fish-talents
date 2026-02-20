@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.15
+
+[compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.14...v0.4.15)
+
+### 🚀 Enhancements
+
+- Job apply flow added ([99d792c](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/99d792c))
+
+### ❤️ Contributors
+
+- SATADRU1 <satadrumondal1331@gmail.com>
+
 ## v0.4.14
 
 [compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.13...v0.4.14)
