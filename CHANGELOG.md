@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.4.16
+
+[compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.15...v0.4.16)
+
+### 🚀 Enhancements
+
+- Add client dashboard with job posting functionality and talent selection ([d5e9ece](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/d5e9ece))
+- Talent dashboard added ([1ab93f1](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/1ab93f1))
+
+### 🩹 Fixes
+
+- Continue with google ([259c43b](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/259c43b))
+
+### ❤️ Contributors
+
+- Nilima Kumar <kumarnilima1512@gmail.com>
+- SATADRU1 <satadrumondal1331@gmail.com>
+
 ## v0.4.15
 
 [compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.14...v0.4.15)
