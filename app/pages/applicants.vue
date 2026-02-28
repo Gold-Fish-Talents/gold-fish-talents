@@ -369,8 +369,8 @@ onMounted(() => {
   if (savedJob) {
     try {
       job.value = JSON.parse(savedJob)
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-empty
+    } catch {
+      console.warn('Failed to parse job data from localStorage, using default data.')
     }
   }
   const savedApplicants = localStorage.getItem('applicantsData')
@@ -378,8 +378,8 @@ onMounted(() => {
     try {
       const loaded = JSON.parse(savedApplicants)
       if (loaded && loaded.length > 0) applicants.value = loaded
-    } catch (e) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-empty
+    } catch {
+      console.warn('Failed to parse applicants data from localStorage, using default data.')
     }
   }
 })

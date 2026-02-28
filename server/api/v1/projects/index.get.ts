@@ -6,8 +6,8 @@ export default defineEventHandler(async (event) => {
     const { modelSlug } = getQuery<{ modelSlug: string }>(event)
     let modelId: string | undefined = undefined
     if (modelSlug) {
-      const query = await notion.databases.query({
-        database_id: notionDbId.model,
+      const query = await notion.dataSources.query({
+        data_source_id: notionDbId.model,
         filter: {
           property: 'Slug',
           formula: { string: { equals: modelSlug } },
