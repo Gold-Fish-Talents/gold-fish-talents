@@ -82,38 +82,75 @@
         <div class="p-5">
           <h3 class="font-semibold mb-3 text-lg text-white">{{ applicant.firstName }} {{ applicant.lastName }}</h3>
           <div class="flex flex-col gap-2">
-            <span class="flex items-center gap-2 text-sm" style="color: rgba(255, 255, 255, 0.8)"
-              ><span>👤</span><span>{{ applicant.category }}</span></span
-            >
-            <span class="flex items-center gap-2 text-sm" style="color: rgba(255, 255, 255, 0.8)"
-              ><span>📍</span><span>{{ applicant.location }}</span></span
-            >
-            <span class="flex items-center gap-2 text-sm" style="color: rgba(255, 255, 255, 0.8)"
-              ><span>⏱️</span><span>{{ applicant.experience }}</span></span
-            >
+            <!-- Category -->
+            <span class="flex items-center gap-2 text-sm" style="color: rgba(255, 255, 255, 0.8)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.7">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+              </svg>
+              <span>{{ applicant.category }}</span>
+            </span>
+            <!-- Location -->
+            <span class="flex items-center gap-2 text-sm" style="color: rgba(255, 255, 255, 0.8)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.7">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              <span>{{ applicant.location }}</span>
+            </span>
+            <!-- Experience -->
+            <span class="flex items-center gap-2 text-sm" style="color: rgba(255, 255, 255, 0.8)">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.7">
+                <circle cx="12" cy="12" r="9" />
+                <polyline points="12 7 12 12 15 15" />
+              </svg>
+              <span>{{ applicant.experience }}</span>
+            </span>
           </div>
         </div>
 
         <div class="flex gap-2 px-5 pb-5">
+          <!-- View Portfolio — yellow pill with glow -->
           <button
-            class="flex-1 cursor-pointer rounded-xl border-none py-3 text-sm font-bold transition-all hover:-translate-y-0.5"
-            style="background: #facc15; color: #0a0e27"
+            class="flex-1 cursor-pointer rounded-full border-none py-3 text-sm font-bold transition-all hover:-translate-y-0.5"
+            style="background: #facc15; color: #0a0e27; box-shadow: 0 0 16px rgba(250, 204, 21, 0.4)"
             @click="viewPortfolio(applicant)">
             View Portfolio
           </button>
+
+          <!-- Shortlist — blue border, bookmark SVG (gold when active) -->
           <button
-            class="flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl text-lg transition-all"
-            :style="applicant.status === 'Shortlisted' ? 'background: rgba(255,215,0,0.3); border: 1px solid #ffd700;' : 'background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);'"
+            class="flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl transition-all hover:-translate-y-0.5"
+            :style="
+              applicant.status === 'Shortlisted' ? 'background: rgba(250,204,21,0.15); border: 1.5px solid #facc15;' : 'background: rgba(56,189,248,0.08); border: 1.5px solid rgba(56,189,248,0.6);'
+            "
             title="Shortlist"
             @click="updateStatus(applicant, 'Shortlisted')">
-            📋
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              :stroke="applicant.status === 'Shortlisted' ? '#facc15' : '#38bdf8'"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+            </svg>
           </button>
+
+          <!-- Delete — blue border, × SVG -->
           <button
-            class="flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl text-lg transition-all"
-            style="background: rgba(248, 113, 113, 0.2); border: 1px solid rgba(248, 113, 113, 0.3); color: #f87171"
+            class="flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl transition-all hover:-translate-y-0.5"
+            style="background: rgba(56, 189, 248, 0.08); border: 1.5px solid rgba(56, 189, 248, 0.6)"
             title="Reject"
             @click="rejectApplicant(applicant)">
-            ✖
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
           </button>
         </div>
       </div>
@@ -131,29 +168,22 @@
         :key="applicant.id"
         class="flex items-center justify-between rounded-2xl px-6 py-5 transition-all"
         style="background: rgba(15, 20, 45, 0.8); border: 1px solid rgba(255, 255, 255, 0.08)">
-        <!-- Left: avatar + info + status badge -->
         <div class="flex items-center gap-4">
           <img :src="applicant.image" :alt="applicant.firstName" class="flex-shrink-0 rounded-xl object-cover" style="width: 56px; height: 56px; border: 1px solid rgba(255, 255, 255, 0.1)" />
           <div>
             <h3 class="m-0 mb-0.5 text-base font-bold text-white">{{ applicant.firstName }} {{ applicant.lastName }}</h3>
             <p class="m-0 mb-2 text-sm" style="color: rgba(255, 255, 255, 0.6)">{{ applicant.category }} with {{ applicant.experience }} experience</p>
-            <span class="rounded-full px-3 py-1 text-xs font-bold" :style="getStatusStyle(applicant.status)">
-              {{ applicant.status }}
-            </span>
+            <span class="rounded-full px-3 py-1 text-xs font-bold" :style="getStatusStyle(applicant.status)">{{ applicant.status }}</span>
           </div>
         </div>
 
-        <!-- Right: dynamic action buttons -->
         <div class="flex items-center gap-3">
-          <!-- Availability — always -->
           <button
             class="font-semibold flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm transition-all hover:-translate-y-0.5"
             style="background: transparent; border: 1px solid rgba(56, 189, 248, 0.5); color: #38bdf8"
             @click="openAvailability(applicant)">
             📅 Availability
           </button>
-
-          <!-- Applied → Shortlist button -->
           <button
             v-if="applicant.status === 'Applied'"
             class="font-semibold flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm transition-all hover:-translate-y-0.5"
@@ -161,8 +191,6 @@
             @click="updateStatus(applicant, 'Shortlisted')">
             📋 Shortlist
           </button>
-
-          <!-- Shortlisted → Select button (yellow) -->
           <button
             v-if="applicant.status === 'Shortlisted'"
             class="flex cursor-pointer items-center gap-2 rounded-full px-5 py-2 text-sm font-bold transition-all hover:-translate-y-0.5"
@@ -170,8 +198,6 @@
             @click="updateStatus(applicant, 'Selected')">
             ✓ Select
           </button>
-
-          <!-- Selected / Rejected → Undo button (same button, same place) -->
           <button
             v-if="applicant.status === 'Selected' || applicant.status === 'Rejected'"
             class="font-semibold flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm transition-all hover:-translate-y-0.5"
@@ -179,8 +205,6 @@
             @click="updateStatus(applicant, 'Applied')">
             ↩ Undo
           </button>
-
-          <!-- Reject — Applied/Shortlisted/Selected , Rejected x -->
           <button
             v-if="applicant.status !== 'Rejected'"
             class="font-semibold flex cursor-pointer items-center gap-2 rounded-full px-4 py-2 text-sm transition-all hover:-translate-y-0.5"
@@ -318,12 +342,9 @@ const stats = computed(() => [
 
 const filteredApplicants = computed(() => {
   let filtered = applicants.value
-
-  //show everyone in Applied filter only filter shortlisted/selected/rejected
   if (activeFilter.value !== 'all' && activeFilter.value !== 'applied') {
     filtered = filtered.filter((a) => a.status.toLowerCase() === activeFilter.value)
   }
-
   if (searchQuery.value) {
     const q = searchQuery.value.toLowerCase()
     filtered = filtered.filter((a) => `${a.firstName} ${a.lastName}`.toLowerCase().includes(q) || a.category.toLowerCase().includes(q) || a.location.toLowerCase().includes(q))
@@ -341,7 +362,6 @@ const getStatusStyle = (status) => {
   return map[status] || map['Applied']
 }
 
-// single central function for all status update
 const updateStatus = (applicant, newStatus) => {
   const i = applicants.value.findIndex((a) => a.id === applicant.id)
   if (i !== -1) applicants.value[i].status = newStatus
@@ -370,7 +390,7 @@ onMounted(() => {
     try {
       job.value = JSON.parse(savedJob)
     } catch {
-      console.warn('Failed to parse job data from localStorage, using default data.')
+      console.warn('Failed to load job data from localStorage')
     }
   }
   const savedApplicants = localStorage.getItem('applicantsData')
@@ -379,7 +399,7 @@ onMounted(() => {
       const loaded = JSON.parse(savedApplicants)
       if (loaded && loaded.length > 0) applicants.value = loaded
     } catch {
-      console.warn('Failed to parse applicants data from localStorage, using default data.')
+      console.warn()
     }
   }
 })

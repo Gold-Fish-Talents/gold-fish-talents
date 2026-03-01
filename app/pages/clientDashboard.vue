@@ -9,38 +9,17 @@
         </h1>
         <p class="text-base text-white/70">Manage your talent casting campaigns</p>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: stretch; min-width: 160px">
-        <button
-          style="
-            background: #facc15;
-            color: #0a0e27;
-            padding: 0.65rem 1.25rem;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            text-align: center;
-          "
-          @click="openPostJob">
-          + Post New Job
+      <div style="display: flex; flex-direction: column; gap: 0.6rem; align-items: stretch; min-width: 175px">
+        <button class="header-btn-yellow" @click="openPostJob">
+          <span style="font-size: 1.15rem; line-height: 1">+</span>
+          Post New Job
         </button>
-        <button
-          style="
-            background: white;
-            color: black;
-            padding: 0.65rem 1.25rem;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            border: 2px solid white;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            text-align: center;
-          "
-          @click="showEditProfile = true">
-          ✏️ Edit Profile
+        <button class="header-btn-white" @click="showEditProfile = true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+          </svg>
+          Edit Profile
         </button>
       </div>
     </header>
@@ -73,7 +52,6 @@
             @click="currentTab = 'active'">
             Active Jobs ({{ activeJobs.length }})
           </button>
-
           <button
             :class="['font-medium rounded-full border-0 px-6 py-2 text-sm transition-all', currentTab === 'closed' ? 'bg-white text-[#0a0e27] shadow-md' : 'text-white/70 hover:text-white']"
             @click="currentTab = 'closed'">
@@ -112,8 +90,6 @@
           <div class="mb-4 rounded-xl bg-white/5 p-4">
             <div v-for="(model, index) in job.models" :key="index" class="mb-2 flex flex-wrap items-center gap-2 last:mb-0">
               <span class="font-semibold text-sm text-white" style="min-width: 52px">Model {{ index + 1 }}</span>
-
-              <!-- Gender: Venus/Mars symbol -->
               <span class="font-medium inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs" style="background: rgba(74, 222, 128, 0.2); color: #4ade80">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="11" cy="11" r="5" />
@@ -122,8 +98,6 @@
                 </svg>
                 {{ model.gender }}
               </span>
-
-              <!-- Age: Calendar icon -->
               <span class="font-medium inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs" style="background: rgba(74, 222, 128, 0.2); color: #4ade80">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -133,16 +107,10 @@
                 </svg>
                 {{ model.age }}
               </span>
-
-              <!-- Height: simple up-down arrow -->
               <span class="font-medium inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs" style="background: rgba(74, 222, 128, 0.2); color: #4ade80">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 4l4-4 4 4h-3v16h3l-4 4-4-4h3V4H8z" />
-                </svg>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4l4-4 4 4h-3v16h3l-4 4-4-4h3V4H8z" /></svg>
                 {{ model.height || '5 ft 6in +' }}
               </span>
-
-              <!-- Skin Tone: no icon, just text -->
               <span class="font-medium inline-flex items-center rounded-lg px-2.5 py-1 text-xs" style="background: rgba(74, 222, 128, 0.2); color: #4ade80">
                 {{ model.skinTone || 'Fair Skin' }}
               </span>
@@ -150,13 +118,19 @@
           </div>
           <p class="mb-4 text-sm leading-relaxed text-white/70">{{ job.description }}</p>
           <div class="flex gap-2">
-            <button
-              style="flex: 1; background: #facc15; color: #0a0e27; padding: 0.75rem; border-radius: 10px; font-weight: 600; cursor: pointer; border: none; font-size: 0.95rem"
-              @click="viewApplicants(job)">
-              View Applicants ({{ getApplicantCount(job.id) }})
+            <button class="view-applicants-btn" @click="viewApplicants(job)">View Applicants ({{ getApplicantCount(job.id) }})</button>
+            <button class="action-icon-btn" @click="editJob(job)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+              </svg>
             </button>
-            <button class="h-10 w-10 cursor-pointer rounded-xl border border-white/20 bg-white/10 text-base transition-all hover:bg-white/15" @click="editJob(job)">✏️</button>
-            <button class="h-10 w-10 cursor-pointer rounded-xl border border-white/20 bg-white/10 text-base transition-all hover:bg-white/15" @click="deleteJob(job.id)">✖</button>
+            <button class="action-icon-btn action-icon-btn--delete" @click="deleteJob(job.id)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -167,7 +141,6 @@
     <!-- ====================================================== -->
     <Transition name="page-slide">
       <div v-if="formStep === 1" class="fixed inset-0 z-[2000] overflow-y-auto" style="background: #060b1a">
-        <!-- Space background -->
         <div class="pointer-events-none absolute inset-0 overflow-hidden">
           <div class="stars-layer"></div>
           <div
@@ -193,7 +166,7 @@
           <div style="position: absolute; width: 300px; height: 250px; background: radial-gradient(ellipse, rgba(30, 60, 120, 0.4) 0%, transparent 70%); top: 50%; left: 55%; filter: blur(40px)"></div>
         </div>
 
-        <div class="relative z-10 mx-auto min-h-screen max-w-2xl px-6 py-16">
+        <div class="relative z-10 mx-auto min-h-screen max-w-2xl px-6 py-16" style="padding-top: 7rem">
           <button class="back-btn" @click="closeForm">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
             Back to Dashboard
@@ -205,21 +178,29 @@
           </div>
 
           <div class="form-card">
+            <!-- Job Title -->
             <div class="field-group">
-              <label class="field-label">Job Title</label>
-              <input v-model="newJob.title" placeholder="Add Job Title" class="post-input" />
+              <label class="field-label">Job Title <span class="req-star">*</span></label>
+              <input v-model="newJob.title" placeholder="Add Job Title" class="post-input" :class="{ 'input-error': formErrors.title }" />
+              <span v-if="formErrors.title" class="err-msg">Job title is required</span>
             </div>
+            <!-- Brand Name -->
             <div class="field-group">
-              <label class="field-label">Brand Name</label>
-              <input v-model="newJob.brand" placeholder="Enter your brand name" class="post-input" />
+              <label class="field-label">Brand Name <span class="req-star">*</span></label>
+              <input v-model="newJob.brand" placeholder="Enter your brand name" class="post-input" :class="{ 'input-error': formErrors.brand }" />
+              <span v-if="formErrors.brand" class="err-msg">Brand name is required</span>
             </div>
+            <!-- Location -->
             <div class="field-group">
-              <label class="field-label">Location</label>
-              <input v-model="newJob.location" placeholder="e.g. Mumbai" class="post-input" />
+              <label class="field-label">Location <span class="req-star">*</span></label>
+              <input v-model="newJob.location" placeholder="e.g. Mumbai" class="post-input" :class="{ 'input-error': formErrors.location }" />
+              <span v-if="formErrors.location" class="err-msg">Location is required</span>
             </div>
+            <!-- Job Description -->
             <div class="field-group" style="margin-bottom: 0">
-              <label class="field-label">Job Description</label>
-              <textarea v-model="newJob.description" placeholder="Describe your shoot" rows="4" class="post-input resize-none"></textarea>
+              <label class="field-label">Job Description <span class="req-star">*</span></label>
+              <textarea v-model="newJob.description" placeholder="Describe your shoot" rows="4" class="post-input resize-none" :class="{ 'input-error': formErrors.description }"></textarea>
+              <span v-if="formErrors.description" class="err-msg">Job description is required</span>
             </div>
           </div>
 
@@ -233,7 +214,6 @@
     <!-- ====================================================== -->
     <Transition name="page-slide">
       <div v-if="formStep === 2" class="fixed inset-0 z-[2000] overflow-y-auto" style="background: #060b1a">
-        <!-- Space background -->
         <div class="pointer-events-none absolute inset-0 overflow-hidden">
           <div class="stars-layer"></div>
           <div
@@ -259,7 +239,7 @@
           <div style="position: absolute; width: 300px; height: 250px; background: radial-gradient(ellipse, rgba(30, 60, 120, 0.4) 0%, transparent 70%); top: 50%; left: 55%; filter: blur(40px)"></div>
         </div>
 
-        <div class="relative z-10 mx-auto min-h-screen max-w-2xl px-6 py-16">
+        <div class="relative z-10 mx-auto min-h-screen max-w-2xl px-6 py-16" style="padding-top: 7rem">
           <button class="back-btn" @click="formStep = 1">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
             Back
@@ -270,13 +250,12 @@
             <p class="text-base text-white/60">Enter your key details to present a refined and professional talent profile.</p>
           </div>
 
-          <!-- One card per talent -->
           <div v-for="(talent, index) in newJob.models" :key="index" class="form-card" style="margin-bottom: 1.25rem">
-            <!-- Select Talent Category -->
+            <!-- Talent Category -->
             <div class="field-group">
-              <label class="field-label">Select Talent Category</label>
+              <label class="field-label">Select Talent Category <span class="req-star">*</span></label>
               <div class="select-wrapper">
-                <select v-model="talent.category" class="post-input sel-pad">
+                <select v-model="talent.category" class="post-input sel-pad" :class="{ 'input-error': talentErrors[index]?.category }">
                   <option value="" disabled>Select category</option>
                   <option value="Model">Model</option>
                   <option value="Makeup Artist">Makeup Artist</option>
@@ -288,14 +267,15 @@
                 </select>
                 <svg class="select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
               </div>
+              <span v-if="talentErrors[index]?.category" class="err-msg">Talent category is required</span>
             </div>
 
             <!-- Gender + Age -->
             <div class="mb-4 grid grid-cols-2 gap-4">
               <div>
-                <label class="field-label">Gender</label>
+                <label class="field-label">Gender <span class="req-star">*</span></label>
                 <div class="select-wrapper">
-                  <select v-model="talent.gender" class="post-input sel-pad">
+                  <select v-model="talent.gender" class="post-input sel-pad" :class="{ 'input-error': talentErrors[index]?.gender }">
                     <option value="" disabled>Select your Gender</option>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
@@ -303,10 +283,12 @@
                   </select>
                   <svg class="select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6" /></svg>
                 </div>
+                <span v-if="talentErrors[index]?.gender" class="err-msg">Gender is required</span>
               </div>
               <div>
-                <label class="field-label">Age Range</label>
-                <input v-model="talent.age" placeholder="e.g. 18-25" class="post-input" />
+                <label class="field-label">Age Range <span class="req-star">*</span></label>
+                <input v-model="talent.age" placeholder="e.g. 18-25" class="post-input" :class="{ 'input-error': talentErrors[index]?.age }" />
+                <span v-if="talentErrors[index]?.age" class="err-msg">Age range is required</span>
               </div>
             </div>
 
@@ -358,7 +340,7 @@
               </div>
             </div>
 
-            <!-- Talent Role Description -->
+            <!-- Role Description -->
             <div style="margin-bottom: 0">
               <label class="field-label">Talent Role Description</label>
               <textarea v-model="talent.roleDescription" placeholder="Describe the model's role look and on camera presense" rows="3" class="post-input resize-none"></textarea>
@@ -382,9 +364,8 @@
             </button>
           </div>
 
-          <!-- Buttons -->
           <button class="action-btn-white" @click="addModel">Add Another Talent</button>
-          <button class="action-btn-yellow" @click="formStep = 3">Add Shoot Details</button>
+          <button class="action-btn-yellow" @click="goToStep3">Add Shoot Details</button>
         </div>
       </div>
     </Transition>
@@ -394,7 +375,6 @@
     <!-- ====================================================== -->
     <Transition name="page-slide">
       <div v-if="formStep === 3" class="fixed inset-0 z-[2000] overflow-y-auto" style="background: #060b1a">
-        <!-- Space background -->
         <div class="pointer-events-none absolute inset-0 overflow-hidden">
           <div class="stars-layer"></div>
           <div
@@ -420,7 +400,7 @@
           <div style="position: absolute; width: 300px; height: 250px; background: radial-gradient(ellipse, rgba(30, 60, 120, 0.4) 0%, transparent 70%); top: 50%; left: 55%; filter: blur(40px)"></div>
         </div>
 
-        <div class="relative z-10 mx-auto min-h-screen max-w-2xl px-6 py-16">
+        <div class="relative z-10 mx-auto min-h-screen max-w-2xl px-6 py-16" style="padding-top: 7rem">
           <button class="back-btn" @click="formStep = 2">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7" /></svg>
             Back
@@ -432,22 +412,25 @@
           </div>
 
           <div class="form-card">
-            <!-- Shoot Budget + Shoot Location -->
+            <!-- Budget + Shoot Location -->
             <div class="mb-5 grid grid-cols-2 gap-4">
               <div>
-                <label class="field-label">Shoot Budget</label>
-                <input v-model="shootDetails.budget" placeholder="Enter Shoot Budget" class="post-input" />
+                <label class="field-label">Shoot Budget <span class="req-star">*</span></label>
+                <input v-model="shootDetails.budget" placeholder="Enter Shoot Budget" class="post-input" :class="{ 'input-error': shootErrors.budget }" />
+                <span v-if="shootErrors.budget" class="err-msg">Budget is required</span>
               </div>
               <div>
-                <label class="field-label">Shoot Location</label>
-                <input v-model="shootDetails.location" placeholder="Enter Shoot Location" class="post-input" />
+                <label class="field-label">Shoot Location <span class="req-star">*</span></label>
+                <input v-model="shootDetails.location" placeholder="Enter Shoot Location" class="post-input" :class="{ 'input-error': shootErrors.location }" />
+                <span v-if="shootErrors.location" class="err-msg">Shoot location is required</span>
               </div>
             </div>
 
             <!-- Shoot Date -->
             <div class="field-group">
-              <label class="field-label">Shoot Date</label>
-              <input v-model="shootDetails.date" type="date" placeholder="Shoot Date" class="post-input" style="color-scheme: dark" />
+              <label class="field-label">Shoot Date <span class="req-star">*</span></label>
+              <input v-model="shootDetails.date" type="date" class="post-input" style="color-scheme: dark" :class="{ 'input-error': shootErrors.date }" />
+              <span v-if="shootErrors.date" class="err-msg">Shoot date is required</span>
             </div>
 
             <!-- Shoot Description -->
@@ -468,9 +451,13 @@
 import { ref, reactive, computed, watch, onMounted } from 'vue'
 
 const clientName = ref('Client')
-const formStep = ref(0) // 0=hidden, 1=basic info, 2=requirements
+const formStep = ref(0)
 const showEditProfile = ref(false)
 const currentTab = ref('active')
+
+const formErrors = reactive({ title: false, brand: false, location: false, description: false })
+const shootErrors = reactive({ budget: false, location: false, date: false })
+const talentErrors = ref([])
 
 const blankTalent = () => ({
   category: '',
@@ -495,12 +482,7 @@ const newJob = reactive({
   models: [blankTalent()],
 })
 
-const shootDetails = reactive({
-  budget: '',
-  location: '',
-  date: '',
-  description: '',
-})
+const shootDetails = reactive({ budget: '', location: '', date: '', description: '' })
 
 const jobs = ref([
   {
@@ -556,45 +538,31 @@ const closedJobs = computed(() => jobs.value.filter((j) => j.status === 'closed'
 const displayedJobs = computed(() => (currentTab.value === 'active' ? activeJobs.value : jobs.value.filter((j) => j.status === 'closed')))
 const totalApplicants = computed(() => Object.values(applicantsStore.value).reduce((s, a) => s + a.length, 0))
 const shortlistedTalents = computed(() => Object.values(applicantsStore.value).reduce((s, a) => s + a.filter((x) => x.status === 'Shortlisted' || x.status === 'Selected').length, 0))
+
 const stats = computed(() => [
   {
     label: 'Active Jobs',
     value: activeJobs.value.length,
     iconBg: 'rgba(250,204,21,0.18)',
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="2" y="7" width="20" height="14" rx="2"/>
-      <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-      <line x1="12" y1="12" x2="12" y2="16"/>
-      <line x1="10" y1="14" x2="14" y2="14"/>
-    </svg>`,
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`,
   },
   {
     label: 'Total Applicants',
     value: totalApplicants.value,
     iconBg: 'rgba(56,189,248,0.18)',
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-      <circle cx="9" cy="7" r="4"/>
-      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-    </svg>`,
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
   },
   {
     label: 'Shortlisted Talents',
     value: shortlistedTalents.value,
     iconBg: 'rgba(52,211,153,0.18)',
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-    </svg>`,
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`,
   },
   {
     label: 'Closed Job',
     value: closedJobs.value,
     iconBg: 'rgba(167,139,250,0.18)',
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3" y="11" width="18" height="11" rx="2"/>
-      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-    </svg>`,
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
   },
 ])
 
@@ -602,18 +570,37 @@ const getApplicantCount = (jobId) => applicantsStore.value[jobId]?.length ?? 0
 
 const openPostJob = () => {
   Object.assign(newJob, { title: '', brand: '', location: '', description: '', models: [blankTalent()] })
+  Object.assign(formErrors, { title: false, brand: false, location: false, description: false })
+  Object.assign(shootErrors, { budget: false, location: false, date: false })
+  talentErrors.value = []
   formStep.value = 1
 }
 
 const goToStep2 = () => {
-  if (!newJob.title || !newJob.brand || !newJob.location || !newJob.description) {
-    alert('Please fill in all required fields.')
-    return
-  }
+  formErrors.title = !newJob.title.trim()
+  formErrors.brand = !newJob.brand.trim()
+  formErrors.location = !newJob.location.trim()
+  formErrors.description = !newJob.description.trim()
+  if (formErrors.title || formErrors.brand || formErrors.location || formErrors.description) return
   formStep.value = 2
 }
 
+const goToStep3 = () => {
+  talentErrors.value = newJob.models.map((m) => ({
+    category: !m.category,
+    gender: !m.gender,
+    age: !m.age.trim(),
+  }))
+  if (talentErrors.value.some((e) => e.category || e.gender || e.age)) return
+  formStep.value = 3
+}
+
 const submitJob = () => {
+  shootErrors.budget = !shootDetails.budget.trim()
+  shootErrors.location = !shootDetails.location.trim()
+  shootErrors.date = !shootDetails.date
+  if (shootErrors.budget || shootErrors.location || shootErrors.date) return
+
   const newJobId = Date.now()
   const talentNeeded = [...new Set(newJob.models.map((m) => m.category).filter(Boolean))]
   jobs.value.push({
@@ -639,6 +626,7 @@ const closeForm = () => {
   formStep.value = 0
   Object.assign(shootDetails, { budget: '', location: '', date: '', description: '' })
 }
+
 const addModel = () => newJob.models.push(blankTalent())
 const removeModel = (index) => newJob.models.splice(index, 1)
 const editJob = (_job) => alert('Edit functionality - coming soon!')
@@ -686,6 +674,135 @@ onMounted(() => {
     radial-gradient(1px 1px at 18% 48%, rgba(255, 255, 255, 0.5) 0%, transparent 100%), radial-gradient(1px 1px at 88% 72%, rgba(255, 255, 255, 0.3) 0%, transparent 100%),
     radial-gradient(1.5px 1.5px at 33% 23%, rgba(255, 255, 255, 0.6) 0%, transparent 100%), radial-gradient(1px 1px at 63% 91%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
     radial-gradient(1px 1px at 96% 55%, rgba(255, 255, 255, 0.3) 0%, transparent 100%), radial-gradient(1px 1px at 2% 35%, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+}
+
+/* ── Mandatory field star ── */
+.req-star {
+  color: #f87171;
+  font-size: 0.85rem;
+  margin-left: 2px;
+}
+
+/* ── Error message ── */
+.err-msg {
+  display: block;
+  color: #f87171;
+  font-size: 0.75rem;
+  margin-top: 0.35rem;
+}
+
+/* ── Error border on inputs ── */
+.input-error {
+  border-color: rgba(248, 113, 113, 0.6) !important;
+  background: rgba(248, 113, 113, 0.05) !important;
+}
+
+/* ── Icon Action Buttons (Edit / Delete) ── */
+.action-icon-btn {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  border: 1.5px solid rgba(99, 179, 237, 0.55);
+  background: rgba(99, 179, 237, 0.08);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+  box-shadow:
+    0 0 10px rgba(99, 179, 237, 0.25),
+    inset 0 0 8px rgba(99, 179, 237, 0.08);
+}
+.action-icon-btn:hover {
+  background: rgba(99, 179, 237, 0.15);
+  border-color: rgba(99, 179, 237, 0.8);
+  box-shadow:
+    0 0 16px rgba(99, 179, 237, 0.45),
+    inset 0 0 10px rgba(99, 179, 237, 0.12);
+}
+.action-icon-btn--delete:hover {
+  background: rgba(248, 113, 113, 0.15);
+  border-color: rgba(248, 113, 113, 0.7);
+  box-shadow:
+    0 0 16px rgba(248, 113, 113, 0.35),
+    inset 0 0 10px rgba(248, 113, 113, 0.1);
+}
+
+/* ── View Applicants Button ── */
+.view-applicants-btn {
+  flex: 1;
+  background: #facc15;
+  color: #0a0e27;
+  padding: 0.85rem;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  font-size: 0.95rem;
+  box-shadow:
+    0 0 14px rgba(250, 204, 21, 0.45),
+    0 0 30px rgba(250, 204, 21, 0.2);
+  transition:
+    box-shadow 0.2s,
+    opacity 0.2s;
+}
+.view-applicants-btn:hover {
+  opacity: 0.93;
+  box-shadow:
+    0 0 22px rgba(250, 204, 21, 0.65),
+    0 0 45px rgba(250, 204, 21, 0.3);
+}
+
+/* ── Header Buttons ── */
+.header-btn-yellow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: #facc15;
+  color: #1a1400;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  box-shadow:
+    0 0 18px rgba(250, 204, 21, 0.4),
+    0 0 40px rgba(250, 204, 21, 0.15);
+  transition:
+    box-shadow 0.2s,
+    opacity 0.2s;
+}
+.header-btn-yellow:hover {
+  opacity: 0.92;
+  box-shadow:
+    0 0 26px rgba(250, 204, 21, 0.6),
+    0 0 55px rgba(250, 204, 21, 0.25);
+}
+.header-btn-white {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.header-btn-white:hover {
+  background: rgba(255, 255, 255, 1);
 }
 
 .back-btn {

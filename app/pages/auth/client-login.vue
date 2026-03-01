@@ -53,7 +53,7 @@ async function onSignIn() {
   // If we are already showing OTP and it was successful, but no navigateTo, force fallback
   if (showOTP.value && data.value?.isSuccess && !data.value?.navigateTo) {
     console.log('[Client Login] OTP Verified but no navigateTo, forcing fallback')
-    await navigateTo('/jobs/post-job')
+    await navigateTo('/clientDashboard')
     return
   }
 
