@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.17
+
+[compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.16...v0.4.17)
+
+### 🚀 Enhancements
+
+- Connect client login page to dashboard ([c982d0d](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/c982d0d))
+
+### ❤️ Contributors
+
+- Nilima Kumar <kumarnilima1512@gmail.com>
+
 ## v0.4.16
 
 [compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.15...v0.4.16)
