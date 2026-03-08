@@ -269,7 +269,10 @@ function setFilter(f: ApplicationFilter) {
 
 <template>
   <main class="relative min-h-[calc(100vh-8rem)] w-full px-4 pb-8 pt-28 md:pb-12 md:pt-32">
-    <div class="pointer-events-none fixed inset-0 -z-10 bg-dark-400 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-dark-500/40 via-dark-400 to-dark-400" aria-hidden="true" />
+    <!-- Starry Galaxy Background -->
+    <div class="stars-bg pointer-events-none fixed inset-0 -z-10 bg-[#080c18]" aria-hidden="true">
+      <div class="nebula-bg absolute inset-0"></div>
+    </div>
 
     <div class="mx-auto w-full max-w-5xl">
       <!-- Welcome section -->
@@ -321,70 +324,91 @@ function setFilter(f: ApplicationFilter) {
       </section>
 
       <!-- Tabs + Preview Portfolio -->
-      <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex rounded-xl bg-dark-500/95 p-1 ring-1 ring-dark-600">
+      <div class="relative mb-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <!-- Tabs in center -->
+        <div class="flex rounded-xl border border-white/10 bg-[#0e1422] p-1">
           <button
             type="button"
-            class="font-medium rounded-lg px-5 py-2.5 text-sm transition-colors"
-            :class="activeTab === 'projects' ? 'bg-primary-500 text-black' : 'text-white/70 hover:text-white'"
+            class="font-medium rounded-lg px-6 py-2.5 text-sm transition-colors"
+            :class="activeTab === 'projects' ? 'bg-[#FFD700] text-black shadow-sm' : 'text-gray-400 hover:text-white'"
             @click="setTab('projects')">
             Projects
           </button>
           <button
             type="button"
-            class="font-medium rounded-lg px-5 py-2.5 text-sm transition-colors"
-            :class="activeTab === 'myjobs' ? 'bg-primary-500 text-black' : 'text-white/70 hover:text-white'"
+            class="font-medium rounded-lg px-6 py-2.5 text-sm transition-colors"
+            :class="activeTab === 'myjobs' ? 'bg-[#FFD700] text-black shadow-sm' : 'text-gray-400 hover:text-white'"
             @click="setTab('myjobs')">
             My Jobs
           </button>
         </div>
-        <button
-          type="button"
-          class="font-medium inline-flex w-fit items-center justify-center gap-2 rounded-xl border border-white/10 bg-dark-600/80 px-5 py-3.5 text-sm text-white ring-1 ring-dark-600 transition-all hover:bg-dark-600 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-dark-500"
-          @click="onPreviewProfile">
-          <NuxtIcon name="local:globe" class="size-5 shrink-0" />
-          Preview Portfolio
-        </button>
+
+        <!-- Preview Portfolio on the right -->
+        <div class="sm:absolute sm:right-0">
+          <button
+            type="button"
+            class="font-medium hover:bg-gray-100 inline-flex w-fit items-center justify-center gap-2 rounded-full border border-white/10 bg-white px-5 py-2.5 text-sm text-black transition-all focus:outline-none focus:ring-2 focus:ring-white"
+            @click="onPreviewProfile">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Preview Portfolio
+          </button>
+        </div>
       </div>
 
       <!-- Projects list -->
-      <section v-if="activeTab === 'projects'" class="flex flex-col gap-6">
-        <article
-          v-for="p in displayProjects"
-          :key="p.id"
-          class="grid grid-cols-1 gap-6 rounded-2xl border border-primary-500/30 bg-dark-500/95 p-6 shadow-xl ring-1 ring-dark-600 backdrop-blur-sm md:grid-cols-[1fr_auto]">
-          <div class="flex flex-col gap-4">
+      <section v-if="activeTab === 'projects'" class="flex flex-col gap-5">
+        <article v-for="p in displayProjects" :key="p.id" class="flex flex-col gap-6 rounded-2xl border border-white/10 bg-[#0e1422] p-6 transition-all duration-200 hover:border-white/20 lg:flex-row">
+          <!-- Left: Info -->
+          <div class="flex min-w-0 flex-1 flex-col gap-3">
             <div class="flex flex-wrap items-center gap-2">
-              <span class="font-medium rounded-full px-3 py-1 text-xs" :class="p.status === 'Verified' ? 'bg-green-500/20 text-green-300' : 'bg-amber-500/25 text-amber-200'">
+              <span
+                class="font-semibold rounded-full px-3 py-1 text-xs"
+                :class="p.status === 'Verified' ? 'border border-[#00e676]/30 bg-[#00e676]/20 text-[#00e676]' : 'border border-[#FFD700]/30 bg-[#b8860b]/30 text-[#FFD700]'">
                 {{ p.status }}
               </span>
-              <span v-for="t in p.tags" :key="t" class="bg-sky-500/20 font-medium text-sky-200 rounded-full px-3 py-1 text-xs">
+              <span v-for="t in p.tags" :key="t" class="font-semibold bg-blue-600 rounded-full px-3 py-1 text-xs text-white">
                 {{ t }}
               </span>
             </div>
 
-            <h3 class="text-xl font-bold text-white md:text-2xl">
+            <h3 class="mt-2 text-xl font-bold leading-snug text-white md:text-2xl">
               {{ p.title }}
             </h3>
 
-            <div class="space-y-1 text-sm text-white/80">
-              <p><span class="text-white/60">Company Name :</span> {{ p.companyName }}</p>
-              <p><span class="text-white/60">Budget:</span> {{ p.budget }}</p>
-              <p><span class="text-white/60">Date:</span> {{ p.date }}</p>
+            <p class="text-gray-300 text-sm">
+              Company Name : <span class="font-medium text-white">{{ p.companyName }}</span>
+            </p>
+
+            <div class="flex items-center gap-8">
+              <p class="text-gray-300 text-sm">
+                Budget: <span class="font-semibold text-white">{{ p.budget }}</span>
+              </p>
+              <p class="text-gray-300 text-sm">
+                Date: <span class="font-semibold text-white">{{ p.date }}</span>
+              </p>
             </div>
 
-            <button
-              type="button"
-              class="font-medium inline-flex w-full max-w-[10rem] items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/90 px-5 py-3 text-sm text-black shadow-sm transition-all hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-dark-500"
-              @click="onEditProject(p)">
-              <NuxtIcon name="local:pencil" class="size-4" />
-              Edit Project
-            </button>
+            <div class="mt-auto pt-4">
+              <button
+                type="button"
+                class="font-semibold hover:bg-gray-100 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3.5 text-sm text-black transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0e1422]"
+                @click="onEditProject(p)">
+                <NuxtIcon name="local:pencil" class="size-4" />
+                Edit Project
+              </button>
+            </div>
           </div>
 
-          <div class="grid grid-cols-3 gap-3">
-            <div v-for="(m, idx) in p.media?.slice(0, 3) ?? [null, null, null]" :key="idx" class="aspect-[3/4] w-full overflow-hidden rounded-xl border border-white/10 bg-dark-600/70">
-              <img v-if="m?.url" :src="m.url" :alt="m.name || 'Project'" class="size-full object-cover" />
+          <!-- Right: Images -->
+          <div class="grid shrink-0 grid-cols-3 gap-3" style="width: 520px; max-width: 100%">
+            <div v-for="(m, idx) in p.media?.slice(0, 3) ?? [null, null, null]" :key="idx" class="aspect-[3/4] w-full overflow-hidden rounded-md bg-dark-600/70">
+              <img v-if="m?.url" :src="m.url" :alt="m.name || 'Project'" class="size-full object-cover transition-transform duration-500 hover:scale-105" />
               <div v-else class="flex size-full items-center justify-center text-white/30">
                 <NuxtIcon name="local:grid" class="size-10" />
               </div>
@@ -524,3 +548,22 @@ function setFilter(f: ApplicationFilter) {
     </div>
   </main>
 </template>
+
+<style scoped>
+.stars-bg {
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0, 0, 0, 0)), radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0, 0, 0, 0)), radial-gradient(1.5px 1.5px at 160px 120px, rgba(200, 200, 200, 0.9), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 240px 90px, #ffffff, rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 300px 200px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 350px 30px, #ffffff, rgba(0, 0, 0, 0)), radial-gradient(1.5px 1.5px at 450px 100px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 500px 250px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)), radial-gradient(2px 2px at 600px 150px, #ffffff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 700px 80px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)), radial-gradient(1.5px 1.5px at 800px 250px, #ffffff, rgba(0, 0, 0, 0));
+  background-size: 800px 400px;
+}
+
+.nebula-bg {
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(20, 25, 60, 0.4) 0%, transparent 40%), radial-gradient(circle at 90% 15%, rgba(15, 30, 50, 0.4) 0%, transparent 45%),
+    radial-gradient(circle at 40% 70%, rgba(30, 20, 60, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(25, 15, 45, 0.3) 0%, transparent 40%);
+}
+</style>
