@@ -25,10 +25,6 @@
 - ⚡️ API Route Caching
 - 📐 Analytics
 
-# Todo
-
-- [ ] Add Testing
-
 ## External Dependencies
 
 - gitleaks
