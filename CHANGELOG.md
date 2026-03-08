@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.4.19
+
+[compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.17...v0.4.19)
+
+### 🩹 Fixes
+
+- Project page design updated ([6867f94](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/6867f94))
+- Ci pipeline ([fa22044](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/fa22044))
+
+### 🤖 CI
+
+- **release:** Update version ([d779558](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/d779558))
+- **release:** Update version ([6d8e78e](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/6d8e78e))
+- **release:** Update version ([e859cd8](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/e859cd8))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi <shirsendu2001@gmail.com>
+- SATADRU1 <satadrumondal1331@gmail.com>
+- Satadru Mondal
+
 ## v0.4.18
 
 [compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.17...v0.4.18)
