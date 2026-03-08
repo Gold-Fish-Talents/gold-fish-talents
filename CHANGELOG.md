@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.18
+
+[compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.17...v0.4.18)
+
+### 🩹 Fixes
+
+- Project page design updated ([6867f94](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/6867f94))
+
+### ❤️ Contributors
+
+- SATADRU1 <satadrumondal1331@gmail.com>
+
 ## v0.4.17
 
 [compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.16...v0.4.17)
