@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.20
+
+[compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.19...v0.4.20)
+
+### 🏡 Chore
+
+- Update rust edition and dependencies in cargo.toml ([11e2e1e](https://github.com/Gold-Fish-Talents/gold-fish-talents/commit/11e2e1e))
+
+### ❤️ Contributors
+
+- Shirsendu Bairagi <shirsendu2001@gmail.com>
+
 ## v0.4.19
 
 [compare changes](https://github.com/Gold-Fish-Talents/gold-fish-talents/compare/v0.4.17...v0.4.19)
