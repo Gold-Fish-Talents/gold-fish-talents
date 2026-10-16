@@ -78,7 +78,7 @@ const removeImage = (index) => {
     <div class="mb-10 flex items-center justify-between">
       <div class="flex items-center gap-4">
         <NuxtLink
-          to="/talentdashboard/myprojects"
+          to="/talentDashboard/myprojects"
           class="text-gray-400 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all hover:bg-white/10 hover:text-white">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />

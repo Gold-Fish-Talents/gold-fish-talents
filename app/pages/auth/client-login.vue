@@ -165,6 +165,7 @@ const rightImages = [
           <NuxtLink
             to="/auth/google"
             external
+            rel="nofollow"
             class="font-medium flex w-full items-center justify-center gap-3 rounded-full bg-white py-3 text-black transition-transform hover:scale-[1.02]"
             @click="onOauthSignIn">
             <!-- Google Icon Mock -->

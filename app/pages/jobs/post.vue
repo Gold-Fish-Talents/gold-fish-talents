@@ -92,6 +92,7 @@ async function onEmailSignIn() {
       <NuxtLink
         to="/auth/google"
         external
+        rel="nofollow"
         class="font-medium flex w-full items-center justify-center gap-3 rounded-xl border border-white/20 bg-white px-5 py-4 text-base text-black shadow-sm transition-all hover:bg-white/95 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-dark-500"
         aria-label="Sign in with Google">
         <NuxtIcon name="local:google" class="size-5 shrink-0" />
@@ -146,7 +147,7 @@ async function onEmailSignIn() {
 
       <p class="text-center text-xs text-light-600">
         By continuing, you agree to our
-        <NuxtLink to="/terms" class="text-primary-400 underline hover:text-primary-400/90">Terms</NuxtLink>
+        <NuxtLink to="/terms/talent" class="text-primary-400 underline hover:text-primary-400/90">Terms</NuxtLink>
         and
         <NuxtLink to="/privacy" class="text-primary-400 underline hover:text-primary-400/90">Privacy Policy</NuxtLink>.
       </p>

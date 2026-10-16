@@ -9,6 +9,13 @@ services:
       - gold-fish-talents_static:/app/static
     networks:
       - internal
+    healthcheck:
+      test: ['CMD-SHELL', 'wget --spider -q http://localhost:3000/api/health || exit 1']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      - typesense
     deploy:
       replicas: 1
       restart_policy:
@@ -24,18 +31,12 @@ services:
       - gold-fish-talents_search-data:/data
     networks:
       - internal
-    deploy:
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-        max_attempts: 3
-
-  browserless:
-    image: ghcr.io/browserless/chromium:latest
-    environment:
-      - CORS=true
-    networks:
-      - internal
+    healthcheck:
+      test: ['CMD', 'bash', '-c', 'exec 6<>/dev/tcp/localhost/8108 || exit 1']
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
     deploy:
       replicas: 1
       restart_policy:

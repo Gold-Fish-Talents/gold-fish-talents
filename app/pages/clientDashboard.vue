@@ -32,6 +32,7 @@
           :key="stat.label"
           class="flex flex-row items-center gap-4 rounded-2xl border border-white/10 bg-[#1a1e3e]/60 p-6 backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-white/20 hover:bg-[#1a1e3e]/80">
           <div class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl" :style="{ background: stat.iconBg }">
+            <!-- eslint-disable-next-line vue/no-v-html -->
             <span v-html="stat.icon"></span>
           </div>
           <div class="flex flex-col">

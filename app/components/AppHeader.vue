@@ -23,7 +23,7 @@ watch(
       <!-- Desktop Navigation -->
       <ul class="hidden items-center gap-8 md:flex">
         <li>
-          <NuxtLink to="/services" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Services </NuxtLink>
+          <NuxtLink to="/services" rel="nofollow" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Services </NuxtLink>
         </li>
         <li>
           <NuxtLink to="/jobs" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Jobs </NuxtLink>
@@ -35,13 +35,13 @@ watch(
           <NuxtLink to="/talents/featured" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Featured Talents </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/work" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Our Work </NuxtLink>
+          <NuxtLink to="/work" rel="nofollow" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Our Work </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/about" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> About </NuxtLink>
+          <NuxtLink to="/about" rel="nofollow" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> About </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/contact" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Contact </NuxtLink>
+          <NuxtLink to="/contact" rel="nofollow" class="text-sm font-regular text-white transition-colors hover:text-primary-400"> Contact </NuxtLink>
         </li>
       </ul>
       <div class="hidden items-center gap-4 md:flex">
@@ -64,7 +64,7 @@ watch(
       <div v-if="isMobileMenuOpen" class="mx-auto mt-2 max-w-6xl overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-lg backdrop-blur-xl md:hidden">
         <ul class="flex flex-col gap-1 p-3">
           <li>
-            <NuxtLink to="/services" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Services </NuxtLink>
+            <NuxtLink to="/services" rel="nofollow" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Services </NuxtLink>
           </li>
           <li>
             <NuxtLink to="/jobs" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Jobs </NuxtLink>
@@ -76,13 +76,13 @@ watch(
             <NuxtLink to="/talents/featured" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Featured Talents </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/work" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Our Work </NuxtLink>
+            <NuxtLink to="/work" rel="nofollow" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Our Work </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/about" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> About </NuxtLink>
+            <NuxtLink to="/about" rel="nofollow" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> About </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/contact" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Contact </NuxtLink>
+            <NuxtLink to="/contact" rel="nofollow" class="block rounded-xl px-4 py-3 text-sm font-regular text-white transition-colors hover:bg-white/10"> Contact </NuxtLink>
           </li>
           <li class="mt-2 flex flex-col gap-2 px-2">
             <NuxtLink

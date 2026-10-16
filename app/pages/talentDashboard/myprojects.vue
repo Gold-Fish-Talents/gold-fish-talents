@@ -140,7 +140,7 @@ const statusStyle = (status) => {
           <!-- Edit Project Button -->
           <div class="mt-2">
             <NuxtLink
-              :to="`/talentdashboard/editproject?id=${project.id}`"
+              :to="`/talentDashboard/editprojects?id=${project.id}`"
               class="font-semibold flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 py-3 text-sm text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10">
               <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path

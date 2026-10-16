@@ -177,8 +177,8 @@ const featuredProject = computed(() => talent.value.projects[0])
     <div class="relative mb-6 flex items-center justify-center">
       <!-- Tabs — NuxtLink navigation -->
       <div class="flex gap-1 rounded-full bg-white/5 p-1">
-        <NuxtLink to="/talentdashboard/dashboard" class="font-medium rounded-full bg-white px-5 py-1.5 text-sm text-black shadow transition-all duration-200">Portfolio</NuxtLink>
-        <NuxtLink to="/talentdashboard/myjobs" class="font-medium text-gray-400 rounded-full px-5 py-1.5 text-sm transition-all duration-200 hover:text-white">My Jobs</NuxtLink>
+        <NuxtLink to="/talentDashboard/dashboard" class="font-medium rounded-full bg-white px-5 py-1.5 text-sm text-black shadow transition-all duration-200">Portfolio</NuxtLink>
+        <NuxtLink to="/talentDashboard/myjobs" class="font-medium text-gray-400 rounded-full px-5 py-1.5 text-sm transition-all duration-200 hover:text-white">My Jobs</NuxtLink>
       </div>
 
       <!-- Share button — absolute right -->
@@ -222,8 +222,8 @@ const featuredProject = computed(() => talent.value.projects[0])
 
       <!-- Edit Profile -->
       <div class="mb-6">
-        <NuxtLink
-          to="/talentdashboard/editprofile"
+        <button
+          type="button"
           class="hover:bg-gray-100 font-semibold inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm text-black shadow-sm transition-all duration-200 active:scale-95">
           <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -233,7 +233,7 @@ const featuredProject = computed(() => talent.value.projects[0])
               d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a2 2 0 01-1.414.586H9v-2a2 2 0 01.586-1.414z" />
           </svg>
           Edit Profile
-        </NuxtLink>
+        </button>
       </div>
 
       <!-- Measurements — separate boxes with yellow left border + toggle arrow -->
@@ -300,7 +300,7 @@ const featuredProject = computed(() => talent.value.projects[0])
       <div v-if="featuredProject" class="mt-6 rounded-2xl border border-white/5 bg-[#111827] p-5 pb-6">
         <div class="mb-6 flex items-center justify-between">
           <NuxtLink
-            to="/talentdashboard/myprojects"
+            to="/talentDashboard/myprojects"
             class="hover:bg-gray-100 font-semibold flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs text-black shadow-sm transition-all duration-200 active:scale-95">
             <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path

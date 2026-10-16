@@ -87,6 +87,7 @@ const rightImages = [
         <NuxtLink
           to="/auth/google"
           external
+          rel="nofollow"
           class="font-medium flex w-full items-center justify-center gap-3 rounded-full bg-white py-3 text-black transition-transform hover:scale-[1.02]"
           aria-label="Sign in with Google"
           @click="onOauthSignIn">
@@ -151,7 +152,7 @@ const rightImages = [
 
         <!-- Footer -->
         <div class="text-gray-400 mt-8 text-center text-xs">
-          By continuing, you agree to our <NuxtLink to="/terms" class="text-[#FFD400] hover:underline">Terms</NuxtLink> and
+          By continuing, you agree to our <NuxtLink to="/terms/client" class="text-[#FFD400] hover:underline">Terms</NuxtLink> and
           <NuxtLink to="/privacy" class="ml-1 text-[#FFD400] hover:underline">Privacy Policy</NuxtLink>.
         </div>
       </section>

@@ -298,8 +298,8 @@ const talentStyle = () => 'bg-orange-500/15 text-orange-400 border border-orange
     <!-- ── Tabs + Favorites ────────────────────────────── -->
     <div class="relative mb-10 flex items-center justify-center">
       <div class="flex gap-1 rounded-full bg-white/5 p-1">
-        <NuxtLink to="/talentdashboard/dashboard" class="font-medium text-gray-400 rounded-full px-5 py-1.5 text-sm transition-all duration-200 hover:text-white">Portfolio</NuxtLink>
-        <NuxtLink to="/talentdashboard/myjobs" class="font-medium rounded-full bg-white px-5 py-1.5 text-sm text-black shadow transition-all duration-200">My Jobs</NuxtLink>
+        <NuxtLink to="/talentDashboard/dashboard" class="font-medium text-gray-400 rounded-full px-5 py-1.5 text-sm transition-all duration-200 hover:text-white">Portfolio</NuxtLink>
+        <NuxtLink to="/talentDashboard/myjobs" class="font-medium rounded-full bg-white px-5 py-1.5 text-sm text-black shadow transition-all duration-200">My Jobs</NuxtLink>
       </div>
       <!-- Favorites button — star icon, absolute right -->
       <button

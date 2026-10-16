@@ -67,13 +67,6 @@ export default defineNuxtConfig({
     'nuxt-maplibre',
   ],
   fonts: {
-    /**
-     * Nuxt Fonts proxies and caches remote providers (e.g. Google) under `/_fonts/*`.
-     * In offline / restricted-network dev environments this can introduce long
-     * request timeouts that feel like "slow navigation".
-     *
-     * Use only local fonts to avoid remote fetches.
-     */
     provider: 'local',
   },
   vite: {
@@ -95,14 +88,7 @@ export default defineNuxtConfig({
     experimental: {
       tasks: true,
     },
-    // Avoid running scheduled server-side tasks in development.
-    scheduledTasks:
-      process.env.NODE_ENV === 'production'
-        ? {
-            '*/3 * * * *': [],
-            '*/5 * * * *': ['workflow:agreement-talent'],
-          }
-        : {},
+    scheduledTasks: {},
   },
   routeRules: {
     '/': { ssr: true },
@@ -121,7 +107,7 @@ export default defineNuxtConfig({
     '/license': { isr: 86400 },
   },
   runtimeConfig: {
-    app: {
+    meta: {
       version: '',
       buildTime: '',
     },
@@ -192,6 +178,9 @@ export default defineNuxtConfig({
     registry: {
       googleAnalytics: true,
     },
+  },
+  aiReady: {
+    database: false,
   },
   colorMode: {
     preference: 'dark',
